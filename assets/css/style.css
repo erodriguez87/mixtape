@@ -34,3 +34,15 @@ body{
 .panel {
   margin: 10px 80px 10px 80px; 
 }
+
+.myTapes {
+  display:none
+}
+     
+.tape {
+  cursor:pointer
+}
+.w3-content {
+  height: 300px; 
+  width: 300px;
+}

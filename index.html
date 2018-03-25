@@ -2,13 +2,17 @@
   <meta charset="UTF-8">
   <title>Title Here</title>
   <meta name="viewport" content="width=device-width">
-    <!-- Links to CSS, CDN, then custom below to override -->
-    <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    
+  <!-- Links to CSS, CDN, then custom below to override -->
+  <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+  <title>Mixtape</title> 
+  
 </head>
 
 <body>
@@ -49,19 +53,71 @@
       <!-- template blank row -->
       <div class="row">
         <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"></div>
-      </div>     
+      </div>    
+      
+      <!-- Cassette Tape Slide -->
+      <div class="w3-container">
+          <h2>Slideshow Indicators</h2>
+          <p>Using images to indicate how many slides there are in the slideshow, and highlight the image the user is currently viewing.</p>
+        </div>
+        
+        <div class="w3-content" style="max-width:1200px">
+          <img class="mySlides" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%">
+          <img class="mySlides" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%">
+          <img class="mySlides" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%">
+        
+          <div class="w3-row-padding w3-section">
+            <div class="w3-col s4">
+              <img class="demo w3-opacity w3-hover-opacity-off" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%" onclick="currentDiv(1)">
+            </div>
+            <div class="w3-col s4">
+              <img class="demo w3-opacity w3-hover-opacity-off" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%" onclick="currentDiv(2)">
+            </div>
+            <div class="w3-col s4">
+              <img class="demo w3-opacity w3-hover-opacity-off" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%" onclick="currentDiv(3)">
+            </div>
+          </div>
+        </div>
+        
+        <script> // Tape Image SlideShow  
+          var slideIndex = 1;
+          showDivs(slideIndex);
+          
+          function plusDivs(n) {
+            showDivs(slideIndex += n);
+          }
+          
+          function currentDiv(n) {
+            showDivs(slideIndex = n);
+          }
+          
+          function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            if (n > x.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = x.length}
+            for (i = 0; i < x.length; i++) {
+              x[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+            }
+            x[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " w3-opacity-off";
+          }
+        
+        </script>
     
-  <!-- connection to Jquery -->
-  <script src="https://code.jquery.com/jquery.js"></script>
 
   <!-- Code to the JavaScript File -->
   <script src="assets/javascript/app.js"></script>
+  
 
-
-<div>
+<!-- <div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</div>
+</div> -->
 
 
 </body></html>
