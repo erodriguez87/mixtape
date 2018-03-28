@@ -14,6 +14,9 @@
   <title>Mixtape</title> 
   
 </head>
+
+<body>
+
 <div class = "container col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="row">
     <div class="container col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -35,78 +38,74 @@
     </div>
   </div>
   
-  <body>
-  <!-- template blank row -->
-  <!-- <div class="container col-lg-6 col-md-6 col-sm-6 col-xs-12"> -->
-        <!-- Cassette Tape Slide -->
-        <!-- <div class="w3-container">
-            <h2>Slideshow Indicators</h2>
-            <p>Using images to indicate how many slides there are in the slideshow, and highlight the image the user is currently viewing.</p>
-          </div> -->
-          <div class="w3-content" style="max-width:1200px">
-            <img class="mySlides" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%">
-            <img class="mySlides" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%">
-            <img class="mySlides" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%">
-          
-            <div class="w3-row-padding w3-section">
-              <div class="w3-col s4">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%" onclick="currentDiv(1)">
-              </div>
-              <div class="w3-col s4">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%" onclick="currentDiv(2)">
-              </div>
-              <div class="w3-col s4">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%" onclick="currentDiv(3)">
-              </div>
-            </div> <!-- end w3-row-padding class -->
-          </div> <!-- end w3-content class -->
-        <!-- </div> end lower div class container -->
-</div> <!-- end wrapper container -->
+  <div class="wrapper">
+    <div class="box header">
+      <h1>Mixtape Maker</h1>
+    </div>
+    <div class="box mixtapeInfo">mixtapeInfo</div>
+    <div class="box tapeSelection">
+      tapeSelection
+      <div class="w3-content w3-display-container" style="max-width:800px">
+        <img class="mySlides" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%">
+        <img class="mySlides" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%">
+        <img class="mySlides" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%">
+        <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+          <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+          <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+        </div>
+      </div>
+    </div> <!--END tapeSelection DIV -->
+    <div class="box searchBox">searchBox</div>
+    <div class="box playlist">playlist</div>
+    <div class="box recentHeader">recentHeader</div>
+    <div class="box recentPlaylist1">recentPlaylist1</div>
+    <div class="box recentPlaylist2">recentPlaylist2</div>
+    <div class="box recentPlaylist3">recentPlaylist3</div>
+    <div class="box recentPlaylist4">recentPlaylist4</div>
+    <div class="box footer">footer</div>
+  </div>
 
-    
-
-        <script> // Tape Image SlideShow  
-          var slideIndex = 1;
-          showDivs(slideIndex);
-          
-          function plusDivs(n) {
-            showDivs(slideIndex += n);
-          }
-          
-          function currentDiv(n) {
-            showDivs(slideIndex = n);
-          }
-          
-          function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            if (n > x.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = x.length}
-            for (i = 0; i < x.length; i++) {
-              x[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-              dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-            }
-            x[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " w3-opacity-off";
-          }
+      
+      
         
-        </script>
+  <script> // Tape Image SlideShow  
+    var slideIndex = 1;
+    showDivs(slideIndex);
+    
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+    
+    function currentDiv(n) {
+      showDivs(slideIndex = n);
+    }
+    
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("demo");
+      if (n > x.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+      }
+      x[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " w3-opacity-off";
+    }
+  
+  </script>
     
 
   <!-- Code to the JavaScript File -->
   <script src="assets/javascript/app.js"></script>
   <script src="assets/javascript/musixmatch.js"></script>
   
-
-
-<!-- <div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</div> -->
-
 
 </body></html>
 
