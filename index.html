@@ -14,71 +14,57 @@
   <title>Mixtape</title> 
   
 </head>
-
-<body>
-  <!-- full width header -->
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header"> 
-          <h1>Mixtape Maker</h1>
-          <h2>Simple app to send mixtapes from Spotify</h2>
+<div class = "container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="row">
+    <div class="container col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Make a Tape</div>
+        <div class="panel-body form-group">
+          <div class="form-group">
+            <label for="mixtapeName">Name Your Mixtape: </label>
+            <input type="mixtapeName" class="form-control" id="mixtapeName">
+          </div>
+          <div class="form-group">
+            <label for="userName">Made by: </label>
+            <input type="userName" class="form-control" id="userName">
+            <br>
+            <button type="submit" class="btn btn-info">Record</button>
+          </div>
+        </div>         
       </div>
     </div>
-  </nav>
+  </div>
+  
+  <body>
+  <!-- template blank row -->
+  <!-- <div class="container col-lg-6 col-md-6 col-sm-6 col-xs-12"> -->
+        <!-- Cassette Tape Slide -->
+        <!-- <div class="w3-container">
+            <h2>Slideshow Indicators</h2>
+            <p>Using images to indicate how many slides there are in the slideshow, and highlight the image the user is currently viewing.</p>
+          </div> -->
+          <div class="w3-content" style="max-width:1200px">
+            <img class="mySlides" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%">
+            <img class="mySlides" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%">
+            <img class="mySlides" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%">
+          
+            <div class="w3-row-padding w3-section">
+              <div class="w3-col s4">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%" onclick="currentDiv(1)">
+              </div>
+              <div class="w3-col s4">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%" onclick="currentDiv(2)">
+              </div>
+              <div class="w3-col s4">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%" onclick="currentDiv(3)">
+              </div>
+            </div> <!-- end w3-row-padding class -->
+          </div> <!-- end w3-content class -->
+        <!-- </div> end lower div class container -->
+</div> <!-- end wrapper container -->
 
-  <!-- Page grid -->
-
-  <!-- First row -->
-      <div class="row">
-          <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div class="panel panel-default">
-                  <div class="panel-heading">Empty Table</div>
-                    <div class="panel-body">
-                      <table class="table">
-                        <thead>
-                        
-                        </thead>
-                
-                        <tbody class = ""></tbody>
-                        
-                      </table>
-                    </div>
-                  </div>         
-          </div>
-
-        
-      </div>
     
 
-      <!-- template blank row -->
-      <div class="row">
-        <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"></div>
-      </div>    
-      
-      <!-- Cassette Tape Slide -->
-      <div class="w3-container">
-          <h2>Slideshow Indicators</h2>
-          <p>Using images to indicate how many slides there are in the slideshow, and highlight the image the user is currently viewing.</p>
-        </div>
-        
-        <div class="w3-content" style="max-width:1200px">
-          <img class="mySlides" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%">
-          <img class="mySlides" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%">
-          <img class="mySlides" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%">
-        
-          <div class="w3-row-padding w3-section">
-            <div class="w3-col s4">
-              <img class="demo w3-opacity w3-hover-opacity-off" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%" onclick="currentDiv(1)">
-            </div>
-            <div class="w3-col s4">
-              <img class="demo w3-opacity w3-hover-opacity-off" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%" onclick="currentDiv(2)">
-            </div>
-            <div class="w3-col s4">
-              <img class="demo w3-opacity w3-hover-opacity-off" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%" onclick="currentDiv(3)">
-            </div>
-          </div>
-        </div>
-        
         <script> // Tape Image SlideShow  
           var slideIndex = 1;
           showDivs(slideIndex);
@@ -112,7 +98,9 @@
 
   <!-- Code to the JavaScript File -->
   <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/musixmatch.js"></script>
   
+
 
 <!-- <div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -121,3 +109,13 @@
 
 
 </body></html>
+
+<!-- 
+<table class="table">
+  <thead>
+  
+  </thead>
+
+  <tbody class = ""></tbody>
+  
+</table> -->

@@ -2,8 +2,6 @@
 // Wait for the page to finish loading
 $(document).ready(function() {
 
-
-
   var config = {
     apiKey: "AIzaSyDKWABfmD5z9i_HHVeWAbSxukH1yZqeoAE",
     authDomain: "susangt2018.firebaseapp.com",
