@@ -10,15 +10,19 @@
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+          
+
   <title>Mixtape</title> 
   
 </head>
 
 <body>
-
-<div class = "container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  
   
   <div class="wrapper">
     <div class="box header">
@@ -46,21 +50,25 @@
           </div>
     </div>
     <div class="box tapeSelection">
-      tapeSelection
       <div class="w3-content w3-display-container" style="max-width:800px">
-        <img class="mySlides" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%">
-        <img class="mySlides" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%">
-        <img class="mySlides" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%">
-        <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-          <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
-          <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
-          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
-          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
-        </div>
+        <img class="tapeImages" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%">
+        <img class="tapeImages" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%">
+        <img class="tapeImages" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%">
+        <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
       </div>
+      
+
     </div> <!--END tapeSelection DIV -->
-    <div class="box searchBox">searchBox</div>
+    <div class="box searchBox">searchBox
+      <form>
+        <div class="input-field">
+          <label class="label-icon" for="search"><i class="material-icons">search</i>&nbsp;</label>
+          <input id="search" type="search" required>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div> <!-- END searchBox -->
     <div class="box playlist">playlist</div>
     <div class="box recentHeader">recentHeader</div>
     <div class="box recentPlaylist1">recentPlaylist1</div>
@@ -87,7 +95,7 @@
     
     function showDivs(n) {
       var i;
-      var x = document.getElementsByClassName("mySlides");
+      var x = document.getElementsByClassName("tapeImages");
       var dots = document.getElementsByClassName("demo");
       if (n > x.length) {slideIndex = 1}
       if (n < 1) {slideIndex = x.length}

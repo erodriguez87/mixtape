@@ -1,10 +1,10 @@
 // Mixtape Logic
 // Wait for the page to finish loading
 
-// Begin Firebase integration
 // ==================================================================
 $(document).ready(function() {
-
+  
+    // Begin Firebase integration
   var config = {
     apikey: "AIzaSyDKWABfmD5z9i_HHVeWAbSxukH1yZqeoAE",
     authDomain: "susangt2018.firebaseapp.com",
