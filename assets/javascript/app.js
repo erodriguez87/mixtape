@@ -22,9 +22,9 @@ $(document).ready(function() {
 // Youtube API
 // ==================================================================
 // Need to get the trackname and artist passed from music match
-  var trackName; 
-  var artist;
-  var searchString = 'dare you to move';
+  var trackName = 'dare you to move'; 
+  var artist = 'switchfoot';
+  var searchString = trackName + " " + artist;
   var ytKey = 'AIzaSyC2Ztkch3B2cHJIwLRpZpwzCw4IM6UqwlU';
 
   var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=10&key='+ytKey
@@ -34,7 +34,23 @@ $(document).ready(function() {
     method: 'GET'
   }).then(function(response) {
     console.log(queryURL);
-    console.log(response);
+    var objectsRet = response.items;
+    console.log(objectsRet);
+    console.log(objectsRet[0].snippet.title);
+    console.log(objectsRet[0].snippet.thumbnails.high);
+    console.log(objectsRet[0].snippet.thumbnails.high.url);
+    console.log(objectsRet[0].id.videoId);
+    
+    var youObj = {
+      title : objectsRet[0].snippet.title,
+      thumbHigh : objectsRet[0].snippet.thumbnails.high.url,
+      embedId: objectsRet[0].id.videoId,
+      iframeUrl : "<iframe id='ytplayer' type='text/html' width='640' height='360' src='https://www.youtube.com/embed/'" + objectsRet[0].id.videoId + "frameborder='0'></iframe>",
+      vidUrl: 'https://www.youtube.com/embed/' + objectsRet[0].id.videoId
+      // use ?autoplay=1& for autoplay
+    };
+    console.log(youObj.iframeUrl);
+    console.log(youObj.vidUrl);
   });
 
 // ==================================================================
