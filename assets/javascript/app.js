@@ -20,15 +20,17 @@ $(document).ready(function() {
 
 
 // Youtube API
-// ==================================================================
-// Need to get the trackname and artist passed from music match
+  // ==================================================================
+  // Need to get the trackname and artist passed from music match. This section searches the youtube API for a mix of the track and artist and returns the top 10 results.
+
+  // set variables for search and establish youtube key
   var trackName = 'dare you to move'; 
   var artist = 'switchfoot';
   var searchString = trackName + " " + artist;
   var ytKey = 'AIzaSyC2Ztkch3B2cHJIwLRpZpwzCw4IM6UqwlU';
-
   var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=10&key='+ytKey
 
+  // ajax call that returns the title of the first video, a high quality thumbnail, the url for the thumbnail and the video id. this video id is used for an embedded video player for the top result video
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -41,6 +43,7 @@ $(document).ready(function() {
     console.log(objectsRet[0].snippet.thumbnails.high.url);
     console.log(objectsRet[0].id.videoId);
     
+    // object that holds all the video elements returned from the api call
     var youObj = {
       title : objectsRet[0].snippet.title,
       thumbHigh : objectsRet[0].snippet.thumbnails.high.url,
