@@ -10,15 +10,19 @@
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+          
+
   <title>Mixtape</title> 
   
 </head>
 
 <body>
-
-<div class = "container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  
   
   <div class="wrapper">
     <div class="box header">
@@ -46,27 +50,76 @@
           </div>
     </div>
     <div class="box tapeSelection">
-      tapeSelection
       <div class="w3-content w3-display-container" style="max-width:800px">
-        <img class="mySlides" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%">
-        <img class="mySlides" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%">
-        <img class="mySlides" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%">
-        <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-          <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
-          <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
-          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
-          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
-        </div>
+        <img class="tapeImages" data-selection="1" src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg" style="width:100%">
+        <img class="tapeImages" data-selection="2" src="http://seattlevideotransfers.com/wp-content/uploads/2016/01/analogdigital_03-300x188.png" style="width:100%">
+        <img class="tapeImages" data-selection="3" src="https://img00.deviantart.net/f2a2/i/2008/299/c/f/cassette_tape_orange_by_7scout7.jpg" style="width:100%">
+        <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
       </div>
     </div> <!--END tapeSelection DIV -->
-    <div class="box searchBox">searchBox</div>
+    <div class="box searchBox">searchBox
+      <form>
+        <div class="input-field">
+          <label class="label-icon" for="search"><i class="material-icons">search</i>&nbsp;</label>
+          <input id="search" type="search" required>
+          <i class="material-icons">close</i>
+          <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons right">send</i>
+            </button>
+        </div>
+      </form>
+    </div> <!-- END searchBox -->
     <div class="box playlist">playlist</div>
     <div class="box recentHeader">recentHeader</div>
-    <div class="box recentPlaylist1">recentPlaylist1</div>
-    <div class="box recentPlaylist2">recentPlaylist2</div>
-    <div class="box recentPlaylist3">recentPlaylist3</div>
-    <div class="box recentPlaylist4">recentPlaylist4</div>
+    <div class="box recentPlaylist1">recentPlaylist1
+      <div class="card">
+        <div class="card-image">
+          <img src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg">
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div> <!-- END Playlist Div -->
+    <div class="box recentPlaylist2">recentPlaylist2
+      <div class="card">
+          <div class="card-image">
+            <img src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg">
+            <span class="card-title">Card Title</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+        </div>
+    </div> <!-- END Playlist Div -->
+    <div class="box recentPlaylist3">recentPlaylist3
+      <div class="card">
+          <div class="card-image">
+            <img src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg">
+            <span class="card-title">Card Title</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+        </div>
+    </div> <!-- END Playlist Div -->
+    <div class="box recentPlaylist4">recentPlaylist4
+      <div class="card">
+          <div class="card-image">
+            <img src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg">
+            <span class="card-title">Card Title</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+        </div>
+    </div> <!-- END Playlist Div -->
     <div class="box footer">footer</div>
   </div>
 
@@ -74,6 +127,7 @@
       
         
   <script> // Tape Image SlideShow  
+  // May be able to move script in js file by adding onclick function to js instead of calling from button attribute. 
     var slideIndex = 1;
     showDivs(slideIndex);
     
@@ -87,8 +141,8 @@
     
     function showDivs(n) {
       var i;
-      var x = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("demo");
+      var x = document.getElementsByClassName("tapeImages");
+      var dots = document.getElementsByClassName("demo"); // demo is not a class in the tapeselection code.  
       if (n > x.length) {slideIndex = 1}
       if (n < 1) {slideIndex = x.length}
       for (i = 0; i < x.length; i++) {

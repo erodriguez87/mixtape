@@ -18,10 +18,9 @@ body{
   text-align: center;
 }
 
-.images{
+.tapeImages {
   width: auto;
   height: auto;
-
 }
 .container-table {
   display: table;
@@ -43,10 +42,6 @@ body{
   cursor:pointer
 
 }
-.w3-content {
-  height: 300px; 
-  width: 300px;
-}
 
 /* GRID LAYOUT */
 .wrapper{
@@ -64,7 +59,7 @@ body{
 
 .wrapper > div{
   background:#eee;
-  padding:1em;
+  padding:10px;
 }
 .wrapper > div:nth-child(odd){
   background:#ddd;
