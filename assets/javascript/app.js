@@ -4,17 +4,17 @@
 // ==================================================================
 $(document).ready(function() {
   
-    // Begin Firebase integration
-  var config = {
-    apikey: "AIzaSyDKWABfmD5z9i_HHVeWAbSxukH1yZqeoAE",
-    authDomain: "susangt2018.firebaseapp.com",
-    databaseURL: "https://susangt2018.firebaseio.com",
-    projectId: "susangt2018",
-    storageBucket: "susangt2018.appspot.com",
-    messagingSenderId: "271189265430"
-  };
-  firebase.initializeApp(config);
-  var database = firebase.database();
+  // Begin Firebase integration
+    var config = {
+      apikey: "AIzaSyDKWABfmD5z9i_HHVeWAbSxukH1yZqeoAE",
+      authDomain: "susangt2018.firebaseapp.com",
+      databaseURL: "https://susangt2018.firebaseio.com",
+      projectId: "susangt2018",
+      storageBucket: "susangt2018.appspot.com",
+      messagingSenderId: "271189265430"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database();
 // ==================================================================
 
 
@@ -56,6 +56,12 @@ $(document).ready(function() {
     console.log(youObj.vidUrl);
   });
 
+// ==================================================================
+
+// Modal
+  $(document).ready(function(){
+    $('.modal-trigger').leanModal();
+  });
 // ==================================================================
 
 });
