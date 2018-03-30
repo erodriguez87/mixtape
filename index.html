@@ -35,47 +35,18 @@
           <label for="userName">Made by</label>
         </div>
         <div class="input-field">
-            <input id="email_inline" type="email" class="validate">
-            <label for="email_inline">Email</label>
+            <input id="userEmail" type="email" class="validate">
+            <label for="userEmail">Email</label>
         </div>
-      <a class="waves-effect waves-light btn">Save</a>
+      <a class="waves-effect waves-light btn mixtapeInfoSave">Save</a>
       </form>
 
-
-        <!-- <div class="row">
-            <div class="container col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">Make a Tape</div>
-                <div class="panel-body form-group">
-                  <div class="form-group">
-                    <label for="mixtapeName">Name Your Mixtape: </label>
-                    <input type="mixtapeName" class="form-control" id="mixtapeName">
-                  </div>
-                  <div class="form-group">
-                    <label for="userName">Made by: </label>
-                    <input type="userName" class="form-control" id="userName">
-                    <br>
-                    <button type="submit" class="btn btn-info">Record</button>
-                  </div>
-                </div>         
-              </div>
-            </div>
-          </div> -->
     </div>
     <div class="box tapeSelection">
-      <!-- <div class="w3-content w3-display-container" style="max-width:800px"> -->
-        <img class="tapeImages" data-selection="1" src="assets/images/tape1.jpg" style="width:100%">
-        <img class="tapeImages" data-selection="2" src="assets/images/tape2.png" style="width:100%">
-        <img class="tapeImages" data-selection="3" src="assets/images/tape3.png" style="width:100%">
-        <img class="tapeImages" data-selection="3" src="assets/images/tape4.jpg" style="width:100%">
-        <img class="tapeImages" data-selection="3" src="assets/images/tape5.png" style="width:100%">
-        <img class="tapeImages" data-selection="3" src="assets/images/tape6.jpg" style="width:100%">
+        <div class="images"></div>
+        <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnL"><i class="material-icons right">arrow_back</i></a>
+        <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnR"><i class="material-icons right">arrow_forward</i></a>
 
-        <a class="waves-effect waves-light btn-floating "><i class="material-icons right">arrow_back</i></a>
-        <a class="waves-effect waves-light btn-floating "><i class="material-icons right">arrow_forward</i></a>
-
-
-      <!-- </div> -->
     </div> <!--END tapeSelection DIV -->
     <div class="box searchBox">
       <form>
@@ -145,7 +116,7 @@
 
       
       
-<script> // Tape Image SlideShow
+<!-- <script> // Tape Image SlideShow
   // May be able to move script in js file by adding onclick function to js instead of calling from button attribute. 
     var slideIndex = 1;
     showDivs(slideIndex);
@@ -174,7 +145,7 @@
       dots[slideIndex-1].className += " w3-opacity-off";
     }
   
-</script> <!-- // END Image SlideShow --> 
+</script> // END Image SlideShow  -->
  
 
   <!-- Code to the JavaScript File -->

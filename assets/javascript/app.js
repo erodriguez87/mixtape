@@ -56,6 +56,53 @@ $(document).ready(function() {
     console.log(youObj.vidUrl);
   });
 
+// ===== Mixtape Info =============================================================
+  // Tape Selector
+  var tapeImageArray = []; 
+  var tape1 = $('<img class="tapeImages" id="tape1" src="assets/images/tape1.jpg" style="width:100%">'); 
+  var tape2 = $('<img class="tapeImages" id="tape2" src="assets/images/tape2.png" style="width:100%">'); 
+  var tape3 = $('<img class="tapeImages" id="tape3" src="assets/images/tape3.png" style="width:100%">'); 
+  var tape4 = $('<img class="tapeImages" id="tape4" src="assets/images/tape4.jpg" style="width:100%">'); 
+  var tape5 = $('<img class="tapeImages" id="tape5" src="assets/images/tape5.png" style="width:100%">'); 
+  var tape6 = $('<img class="tapeImages" id="tape6" src="assets/images/tape6.jpg" style="width:100%">'); 
+  tapeImageArray.push(tape1, tape2, tape3, tape4, tape5, tape6); 
+  console.log(tapeImageArray[0]); 
+  var tape = 0
+  $('.images').html(tapeImageArray[tape]); 
+
+  $('.tapeBtns').on('click', function() {
+    var btn = $(this).attr('id'); 
+    console.log(btn);
+    if (btn === "arrowBtnL") {
+      tape = tape - 1; 
+      if (tape < 0) {
+        tape = (tapeImageArray.length - 1); 
+      }
+    } else if (btn === "arrowBtnR") {
+      tape = tape + 1; 
+      if (tape > (tapeImageArray.length - 1)) {
+        tape = 0
+      }
+    }
+    $('.images').html(tapeImageArray[tape]); 
+  }); //END 
+
+  // Mixtape info
+  $('.mixtapeInfoSave').on('click', function() {
+    var userTapeSelection = tapeImageArray[tape].attr('src'); 
+    var mixtapeName = $('#mixtapeName').val(); 
+    var userName = $('#userName').val(); 
+    var userEmail = $('#userEmail').val();   
+    var mixtapeInfo = {
+      mixtapeName: mixtapeName,
+      userName: userName, 
+      userEmail: userEmail,
+      userTapeSelection: userTapeSelection
+    }
+    console.log(mixtapeInfo);
+
+  })
+
 // ==================================================================
 
 
