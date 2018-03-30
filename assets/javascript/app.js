@@ -4,17 +4,17 @@
 // ==================================================================
 $(document).ready(function() {
   
-    // Begin Firebase integration
-  var config = {
-    apikey: "AIzaSyDKWABfmD5z9i_HHVeWAbSxukH1yZqeoAE",
-    authDomain: "susangt2018.firebaseapp.com",
-    databaseURL: "https://susangt2018.firebaseio.com",
-    projectId: "susangt2018",
-    storageBucket: "susangt2018.appspot.com",
-    messagingSenderId: "271189265430"
-  };
-  firebase.initializeApp(config);
-  var database = firebase.database();
+  // Begin Firebase integration
+    var config = {
+      apikey: "AIzaSyDKWABfmD5z9i_HHVeWAbSxukH1yZqeoAE",
+      authDomain: "susangt2018.firebaseapp.com",
+      databaseURL: "https://susangt2018.firebaseio.com",
+      projectId: "susangt2018",
+      storageBucket: "susangt2018.appspot.com",
+      messagingSenderId: "271189265430"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database();
 // ==================================================================
 
 
@@ -38,26 +38,21 @@ $(document).ready(function() {
     console.log(queryURL);
     var objectsRet = response.items;
     console.log(objectsRet);
-    console.log(objectsRet[0].snippet.title);
-    console.log(objectsRet[0].snippet.thumbnails.high);
-    console.log(objectsRet[0].snippet.thumbnails.high.url);
-    console.log(objectsRet[0].id.videoId);
     
     // object that holds all the video elements returned from the api call
     var youObj = {
-      title : objectsRet[0].snippet.title,
-      thumbHigh : objectsRet[0].snippet.thumbnails.high.url,
-      embedId: objectsRet[0].id.videoId,
+      title : objectsRet[0].snippet.title, //video title
+      thumbHigh : objectsRet[0].snippet.thumbnails.high.url, //video thumbnail
+      embedId: objectsRet[0].id.videoId, //id of video for search iframe
       iframeUrl : "<iframe id='ytplayer' type='text/html' width='640' height='360' src='https://www.youtube.com/embed/'" + objectsRet[0].id.videoId + "frameborder='0'></iframe>",
-      vidUrl: 'https://www.youtube.com/embed/' + objectsRet[0].id.videoId
+      vidUrl: 'https://www.youtube.com/embed/' + objectsRet[0].id.videoId // iframe link
       // use ?autoplay=1& for autoplay
     };
-    console.log(youObj.iframeUrl);
-    console.log(youObj.vidUrl);
+    // console.log(youObj.iframeUrl);
+    // console.log(youObj.vidUrl);
   });
 
 // ==================================================================
-
 
 // === Mixtape Info and Tape Selector ===============================
   // function saveMixtapeInfo () {
@@ -107,8 +102,13 @@ $(document).ready(function() {
 
   // }; // END saveMixtapeInfo
 
-
 // ==================================================================
 
-
+// Modal
+  $(document).ready(function(){
+    $('.modal-trigger').leanModal();
+  });
+// ==================================================================
+  
+  
 });
