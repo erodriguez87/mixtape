@@ -5,11 +5,9 @@
   <!-- Links to CSS, CDN, then custom below to override -->
   <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -30,26 +28,19 @@
     </div>
     <div class="box mixtapeInfo">
       <form>
-        <div class="row">
-          <div class="input-field col s8">
-            <input id="mixtapeName" type="text" class="validate">
-            <label for="mixtapeName">Name Your Mixtape: </label>
-          </div>
+        <div class="input-field">
+          <input id="mixtapeName" type="text" class="validate">
+          <label for="mixtapeName">Name Your Mixtape</label>
         </div>
-        <div class="row">
-          <div class="input-field col s8">
-            <input id="userName" type="text" class="validate">
-            <label for="userName">Made by: </label>
-          </div>
+        <div class="input-field">
+          <input id="userName" type="text" class="validate">
+          <label for="userName">Made by</label>
         </div>
-        <div class="row">
-          <div class="input-field col s8">
-              <input id="email_inline" type="email" class="validate">
-              <label for="email_inline">Email</label>
-          </div>
+        <div class="input-field">
+            <input id="email_inline" type="email" class="validate">
+            <label for="email_inline">Email</label>
         </div>
-        <a class="waves-effect waves-light btn">Save</a>
-
+      <a class="waves-effect waves-light btn">Save</a>
       </form>
 
 
@@ -82,8 +73,10 @@
         <img class="tapeImages" data-selection="3" src="assets/images/tape5.png" style="width:100%">
         <img class="tapeImages" data-selection="3" src="assets/images/tape6.jpg" style="width:100%">
 
-        <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+        <a class="waves-effect waves-light btn">arrow_back</a>
+        <a class="waves-effect waves-light btn">arrow_forward</a>
+
+
       </div>
     </div> <!--END tapeSelection DIV -->
     <div class="box searchBox">
@@ -95,9 +88,7 @@
               <label for="search">Search Music</label>
             </div>
           </div>
-          <button class="searchBtn btn waves-effect waves-light" type="submit" name="action">Search
-            <i class="material-icons right">send</i>
-          </button>
+          <a class="waves-effect waves-light btn">Search<i class="material-icons right">send</i></a>
         </div>
       </form>
     </div> <!-- END searchBox -->
