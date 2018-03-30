@@ -5,14 +5,13 @@
   <!-- Links to CSS, CDN, then custom below to override -->
   <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
@@ -44,47 +43,40 @@
         </div>
         <div class="row">
           <div class="input-field col s8">
-              <input id="email_inline" type="email" class="validate">
-              <label for="email_inline">Email</label>
+              <input id="userEmail" type="email" class="validate">
+              <label for="userEmail">Email</label>
           </div>
         </div>
-        <a class="waves-effect waves-light btn">Save</a>
-
+        <a class="waves-effect waves-light mixtapeInfoSave btn">Save</a>
       </form>
-
-
-        <!-- <div class="row">
-            <div class="container col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">Make a Tape</div>
-                <div class="panel-body form-group">
-                  <div class="form-group">
-                    <label for="mixtapeName">Name Your Mixtape: </label>
-                    <input type="mixtapeName" class="form-control" id="mixtapeName">
-                  </div>
-                  <div class="form-group">
-                    <label for="userName">Made by: </label>
-                    <input type="userName" class="form-control" id="userName">
-                    <br>
-                    <button type="submit" class="btn btn-info">Record</button>
-                  </div>
-                </div>         
-              </div>
-            </div>
-          </div> -->
+      
     </div>
     <div class="box tapeSelection">
-      <div class="w3-content w3-display-container" style="max-width:800px">
-        <img class="tapeImages" data-selection="1" src="assets/images/tape1.jpg" style="width:100%">
-        <img class="tapeImages" data-selection="2" src="assets/images/tape2.png" style="width:100%">
-        <img class="tapeImages" data-selection="3" src="assets/images/tape3.png" style="width:100%">
-        <img class="tapeImages" data-selection="3" src="assets/images/tape4.jpg" style="width:100%">
-        <img class="tapeImages" data-selection="3" src="assets/images/tape5.png" style="width:100%">
-        <img class="tapeImages" data-selection="3" src="assets/images/tape6.jpg" style="width:100%">
-
-        <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+      <!-- <div class="w3-content w3-display-container" style="max-width:800px"> -->
+        <div class="tapeSub">
+          <div>
+            <img class="tapeImages" id="tape1" src="assets/images/tape1.jpg" style="width:100%">
+          </div>
+          <div>
+            <img class="tapeImages" id="tape2" src="assets/images/tape2.png" style="width:100%">
+          </div>
+          <div>
+            <img class="tapeImages" id="tape3" src="assets/images/tape3.png" style="width:100%">
+          </div>
+          <div>
+            <img class="tapeImages" id="tape4" src="assets/images/tape4.jpg" style="width:100%">
+          </div>
+          <div>
+            <img class="tapeImages" id="tape5" src="assets/images/tape5.png" style="width:100%">
+          </div>
+          <div>
+            <img class="tapeImages" id="tape6" src="assets/images/tape6.jpg" style="width:100%">
+          </div>
       </div>
+          
+        <!-- <button class="w3-button w3-display-left w3-black">&#10094;</button>
+        <button class="w3-button w3-display-right w3-black">&#10095;</button> -->
+      <!-- </div> -->
     </div> <!--END tapeSelection DIV -->
     <div class="box searchBox">
       <form>
@@ -100,6 +92,9 @@
           </button>
         </div>
       </form>
+
+      <div class="searchDump"></div>
+
     </div> <!-- END searchBox -->
     <div class="box playlist">playlist</div>
     <div class="box recentHeader">recentHeader</div>
@@ -156,7 +151,7 @@
 
       
       
-<script> // Tape Image SlideShow
+<!-- <script> // Tape Image SlideShow
   // May be able to move script in js file by adding onclick function to js instead of calling from button attribute. 
     var slideIndex = 1;
     showDivs(slideIndex);
@@ -172,20 +167,15 @@
     function showDivs(n) {
       var i;
       var x = document.getElementsByClassName("tapeImages");
-      var dots = document.getElementsByClassName("demo"); // demo is not a class in the tapeselection code.  
       if (n > x.length) {slideIndex = 1}
       if (n < 1) {slideIndex = x.length}
       for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
       }
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-      }
       x[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " w3-opacity-off";
     }
   
-</script> <!-- // END Image SlideShow --> 
+</script> // END Image SlideShow  -->
  
 
   <!-- Code to the JavaScript File -->
