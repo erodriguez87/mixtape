@@ -1,10 +1,13 @@
 // Mixtape Logic
 // Wait for the page to finish loading
+var data = [];
+var jsonPlaylist = []; //declare object
 
 // ==================================================================
 $(document).ready(function() {
   
-  // Begin Firebase integration
+// Begin Firebase integration ======================================
+
     var config = {
       apikey: "AIzaSyDKWABfmD5z9i_HHVeWAbSxukH1yZqeoAE",
       authDomain: "susangt2018.firebaseapp.com",
@@ -17,9 +20,7 @@ $(document).ready(function() {
     var database = firebase.database();
 // ==================================================================
 
-
-
-// Youtube API
+// Youtube API ======================================================
   // ==================================================================
   // Need to get the trackname and artist passed from music match. This section searches the youtube API for a mix of the track and artist and returns the top 10 results.
 
@@ -51,9 +52,9 @@ $(document).ready(function() {
     // console.log(youObj.iframeUrl);
     // console.log(youObj.vidUrl);
   });
+// ==================================================================
 
-// ===== Mixtape Info =============================================================
-  // Tape Selector
+// =====Tape Selector ===============================================
   var tapeImageArray = []; 
   var tape1 = $('<img class="tapeImages" id="tape1" src="assets/images/tape1.jpg" style="width:100%">'); 
   var tape2 = $('<img class="tapeImages" id="tape2" src="assets/images/tape2.png" style="width:100%">'); 
@@ -68,7 +69,7 @@ $(document).ready(function() {
 
   $('.tapeBtns').on('click', function() {
     var btn = $(this).attr('id'); 
-    console.log(btn);
+    // console.log(btn);
     if (btn === "arrowBtnL") {
       tape = tape - 1; 
       if (tape < 0) {
@@ -82,80 +83,79 @@ $(document).ready(function() {
     }
     $('.images').html(tapeImageArray[tape]); 
   }); //END 
-
-  // Mixtape info
-  $('.mixtapeInfoSave').on('click', function() {
-    var userTapeSelection = tapeImageArray[tape].attr('src'); 
-    var mixtapeName = $('#mixtapeName').val(); 
-    var userName = $('#userName').val(); 
-    var userEmail = $('#userEmail').val();   
-    var mixtapeInfo = {
-      mixtapeName: mixtapeName,
-      userName: userName, 
-      userEmail: userEmail,
-      userTapeSelection: userTapeSelection
-    }
-    console.log(mixtapeInfo);
-
-  })
-
 // ==================================================================
 
-// === Mixtape Info and Tape Selector ===============================
-  // function saveMixtapeInfo () {
-
-  // Tape Selector
-  // var tapeImageArray = []; 
-  // var tape1 = $('<img class="tapeImages" id="tape1" src="assets/images/tape1.jpg" style="width:100%">'); 
-  // var tape2 = $('<img class="tapeImages" id="tape2" src="assets/images/tape2.png" style="width:100%">'); 
-  // var tape3 = $('<img class="tapeImages" id="tape3" src="assets/images/tape3.png" style="width:100%">'); 
-  // var tape4 = $('<img class="tapeImages" id="tape4" src="assets/images/tape4.jpg" style="width:100%">'); 
-  // var tape5 = $('<img class="tapeImages" id="tape5" src="assets/images/tape5.png" style="width:100%">'); 
-  // var tape6 = $('<img class="tapeImages" id="tape6" src="assets/images/tape6.jpg" style="width:100%">'); 
-  // tapeImageArray.push(tape1, tape2, tape3, tape4, tape5, tape6); 
-  // console.log(tapeImageArray[0]); 
-  // var tape = 0
-  // $('.tapeSelection').append(tapeImageArray[tape]); 
-
-  // $('.arrowBtnL').on('click', function() {
-  //   tape = tape -1; 
-  //   $('.tapeSelection').append(tapeImageArray[tape]); 
-  // }); //END 
-
-  // $('.arrowBtnR').on('click', function() {
-  //   tape = tape +1; 
-  //   $('.tapeSelection').append(tapeImageArray[tape]); 
-  // }); //END 
-
-
-
-    $('.mixtapeInfoSave').on('click', function() {
-      var userTapeSelection = $('.tapeImages').attr('src'); 
-      var mixtapeName = $('#mixtapeName').val().trim(); 
-      var userName = $('#userName').val().trim(); 
-      var userEmail = $('#userEmail').val().trim(); 
-      var mixtapeInfo = {
-        mixtapeName: mixtapeName,
-        userName: userName, 
-        userEmail: userEmail,
-        userTapeSelection: userTapeSelection
-      }
-
-      console.log (mixtapeInfo); 
-
-
-    })
-    // saveMixtapeInfo(); 
-
-  // }; // END saveMixtapeInfo
-
-// ==================================================================
-
-// Modal
+// Modal =============================================================
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
   });
 // ==================================================================
   
+// ===== Mixtape Info ===============================================
+  // Mixtape info
+
+  $('.mixtapeInfoSave').on('click', function() {
+    var userTapeSelection = tapeImageArray[tape].attr('src'); 
+    var mixtapeName = $('#mixtapeName').val(); 
+    var userName = $('#userName').val(); 
+    var userEmail = $('#userEmail').val();   
+    var description = $('#description').val();   
+    var playlistDiv = $('.playlistWIP'); 
+    var mixtapeInfo = {
+      mixtapeName: mixtapeName,
+      userName: userName, 
+      userEmail: userEmail,
+      description: description,
+      userTapeSelection: userTapeSelection, 
+      playlist: jsonPlaylist,
+      playlistDiv: playlistDiv
+    }
+
+    // count how many rows in the table 
+    var trackCount = $('.playlistWIP').find('tr').length;
+    console.log(trackCount); 
+
+    var userPlaylist = {}; 
+    var playlistTable = $('#playlistComplete'); 
+
+    var table = document.getElementById("playlistComplete");
+
+    function GetCellValues() {
+      for (var r = 0, n = table.rows.length; r < n; r++) {
+        for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
+          data.push(table.rows[r].cells[c].innerHTML);
+        }
+      }
   
-});
+      for (var i=0; i< data.length; i++) {
+        var tmp_values = [];
+        var tmp_key = []; 
+        
+        for (var i=0; i< data.length; i++) {
+          // console.log(data[i]); 
+          var artistInfo = data[i]; 
+          var albumInfo = data[i +1]; 
+          var trackNameInfo = data[i+2]; 
+          var trackLengthInfo = data[i+3]; 
+          i = i+3; 
+      
+          tmp_values.push({artist: artistInfo, album: albumInfo, trackName: trackNameInfo, trackLength: trackLengthInfo}); //label + value respectively 
+        }
+          
+        jsonPlaylist.push({playlist: tmp_values}); //key
+        i = i+3; 
+      }
+    }
+
+
+    console.log(data); 
+    console.log(jsonPlaylist); 
+    console.log(mixtapeInfo);
+
+    GetCellValues(); 
+  })
+
+// ==================================================================
+
+
+}); //END document.ready()
