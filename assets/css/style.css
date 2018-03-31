@@ -1,20 +1,22 @@
 body{
   font-family: 'Karma', serif;
   /* background-color:rgba(20, 3, 3, 0.733); */
-  color: rgb(188, 184, 204);
+  color: black;
   /* background-image: url("../images/background.jpg"); */
   
 }
 
 .navbar{
-  background-color: rgba(15, 2, 2, 0.452);
   border: 0px;
-  color: rgba(219, 219, 219, 0.944);
   text-align: center;
 }
 
+.box-header{
+
+}
+
 .fontclass{
-  color: rgba(255, 255, 255, 0.8);
+  color:black);
   text-align: center;
 }
 
@@ -30,6 +32,8 @@ body{
   bottom: 50%; 
   left: 2%; 
   z-index: 1; 
+  background-color: white;
+  color: black;
 }
 
 #arrowBtnR {
@@ -37,10 +41,13 @@ body{
   bottom: 50%; 
   z-index: 1; 
   right: 2%; 
+  background-color: white;
+  color: black;
 }
 
 .container-table {
   display: table;
+  color: white;
 }
 
 .vertical-center-row {
