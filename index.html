@@ -45,17 +45,18 @@
             <input id="userEmail" type="email" class="validate">
             <label for="userEmail">Email</label>
         </div>
+        <div class="input-field">
+            <input id="description" type="text" class="validate">
+            <label for="description">Description</label>
+          </div>
       <a class="waves-effect waves-light btn mixtapeInfoSave">Save</a>
       </form>
 
     </div>
     <div class="box tapeSelection">
-        <div class="images"></div>
-        <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnL"><i class="material-icons right">arrow_back</i></a>
-        <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnR"><i class="material-icons right">arrow_forward</i></a>
-
-        <a class="waves-effect waves-light mixtapeInfoSave btn">Save</a>
-        
+      <div class="images"></div>
+      <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnL"><i class="material-icons right">arrow_back</i></a>
+      <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnR"><i class="material-icons right">arrow_forward</i></a>
     </div> <!--END tapeSelection DIV -->
     
     <div class="box searchBox">
@@ -67,21 +68,30 @@
               <label for="search">Search Music</label>
             </div>
           </div>
-          <a class="waves-effect waves-light btn">Search<i class="material-icons right">send</i></a>
-
-          <div class="searchDump">
-
-          </div>
+          <a class="searchBtn waves-effect waves-light btn">Search<i class="material-icons right">send</i></a>
         </div>
       </form>
-
       <div class="searchDump"></div>
 
     </div> <!-- END searchBox -->
     <div class="box playlist">playlist
-
-
-
+        <table  class="highlight">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Artist</th>
+                <th>Song</th>
+              </tr>
+            </thead>
+          
+            <tbody class="playlistWIP">
+              <tr>
+                <td class="songNum">1</td>
+                <td class="artist"></td>
+                <td class="song"></td>
+              </tr>        
+            </tbody>
+          </table>
     </div>
     <div class="box recentHeader">recentHeader</div>
     <div class="box recentPlaylist1">recentPlaylist1
