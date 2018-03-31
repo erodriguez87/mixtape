@@ -157,5 +157,51 @@ $(document).ready(function() {
 
 // ==================================================================
 
+// Final Playlist
+  function genFinPlaylist () {
+    $(document).ready(function(){
+      $('.modal-trigger').leanModal();
+      $('.finalPlaylist').empty(); //clears whatever was in the playlist before
+    
+      var tBody = $('.finalPlaylist');
+      var tbl = $('<table>');
+      var tblH = $('<tr><th>Album Cover</th><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Play</th><th>Youtube</th>')
+      tbl.append(tblH);
+
+      //for loop to loop through the object returned from firebase
+      for (i = 0; i < 10; i++) {
+        var tRow = $('<tr>'); 
+        tRow.empty(); // clears the row after each loopthrough and each append
+        tracks[i] = res.message.body.track_list[i].track.track_name
+        artists[i] = res.message.body.track_list[i].track.artist_name
+        trackLength[i] = Math.floor(parseInt(res.message.body.track_list[i].track.track_length)/60) + ':'+ parseInt(res.message.body.track_list[i].track.track_length) % 60;
+        albumId[i] = res.message.body.track_list[i].track.album_id
+        albumName[i] = res.message.body.track_list[i].track.album_name
+          
+          var artistTd = $('<td class="artist">').text(artists[i]);
+          var trackTd = $('<td class="track">').text(tracks[i]);
+          var albumTd = $('<td class="album">').text(albumName[i]);
+          var trackLengthTd = $('<td class="length">').text(trackLength[i]);
+          
+          tRow.attr('album', albumId[i]);
+          tRow.attr('albumName', albumName[i]);
+          tRow.attr('track', tracks[i]);
+          tRow.attr('artist', artists[i]);
+          tRow.attr('length', trackLength[i]);
+          tRow.addClass('trackSelect hoverable')
+          tRow.append(artistTd, albumTd, trackTd, trackLengthTd);
+          tbl.append(tRow);
+      }
+
+    // Adds the table to the html  
+    tbl.addClass("table highlight");
+    tBody.append(tbl);
+
+
+    });
+  }; // closes the final playlist generation
+// ==================================================================
+  
 
 }); //END document.ready()
+
