@@ -15,6 +15,7 @@
     var artists = [];
     var trackLength = [];
     var albumId = [];
+    var albumName = [];
 
     // function that parses the return from musix match
     function parseMusic (res){
@@ -28,7 +29,7 @@
       $('.searchDump').empty();
       var tBody = $('.searchDump');
       var tbl = $('<table>');
-      var tblH = $('<tr><th>Artist</th><th>Track Name</th><th>Track Length</th>')
+      var tblH = $('<tr><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th>')
       tbl.append(tblH);
 
       //for loop to loop through the top 10 search results from api and add them to an array
@@ -37,24 +38,27 @@
         tRow.empty();
         tracks[i] = res.message.body.track_list[i].track.track_name
         artists[i] = res.message.body.track_list[i].track.artist_name
-        
-        trackLength = parseInt(res.message.body.track_list[0].track.track_length)
-
         trackLength[i] = parseInt(res.message.body.track_list[i].track.track_length)
         albumId[i] = res.message.body.track_list[i].track.album_id
-          var trackTd = $('<td class="track">').text(tracks[i]);
+        albumName[i] = res.message.body.track_list[i].track.album_name
+          
           var artistTd = $('<td class="artist">').text(artists[i]);
+          var trackTd = $('<td class="track">').text(tracks[i]);
+          var albumTd = $('<td class="album">').text(albumName[i]);
           var trackLengthTd = $('<td class="length">').text(trackLength[i]);
-          tRow.attr('album',albumId[i]);
+          
+          tRow.attr('album', albumId[i]);
+          tRow.attr('albumName', albumName[i]);
           tRow.attr('track', tracks[i]);
           tRow.attr('artist', artists[i]);
           tRow.attr('length', trackLength[i]);
-          tRow.append(artistTd, trackTd, trackLengthTd);
+          tRow.addClass('trackSelect')
+          tRow.append(artistTd, albumTd, trackTd, trackLengthTd);
           tbl.append(tRow);
       }
 
     // Adds the table to the html  
-    tbl.addClass("table striped");
+    tbl.addClass("table highlight");
     tBody.append(tbl);
     
     }
@@ -101,18 +105,21 @@
 
 // Second call to MusixMatch for album images on the playlist
   // ==================================================================
-  var albumSelect="";
+  var albumSelect='28247938';
 
   var queryURL2 = 'https://api.musixmatch.com/ws/1.1/album.get?album_id='+albumSelect;
   $.ajax({
     url: queryURL2,
     method: 'GET',
   }).then()
-    .catch(function(err){
+    .catch(function(response){
       console.log(err)
+      var imgDisplay = $("<img>");
+      imgDisplay.attr('src', res.message.body.track_list[i].track.album_coverart_100x100);
+
+
     })
 
 
-    var imgDisplay = $("<img>");
-          // imgDisplay.attr('src', res.message.body.track_list[i].track.album_coverart_100x100);
+    
 // ==================================================================
