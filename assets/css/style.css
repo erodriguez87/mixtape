@@ -39,9 +39,10 @@ body{
   right: 2%; 
 }
 
-/* .container-table {
+.container-table {
   display: table;
 }
+
 .vertical-center-row {
   display: table-cell;
   vertical-align: middle;
@@ -55,9 +56,6 @@ body{
   display:none
 }
      
-
-
-
 .tape {
   cursor:pointer
 }
@@ -99,6 +97,13 @@ body{
   position: relative; 
   z-index: 0; 
   /* grid-row:2/6; */
+}
+
+.tapeSub {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr;
+
 }
 
 .searchBox {

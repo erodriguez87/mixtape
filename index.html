@@ -6,10 +6,17 @@
   <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
           
@@ -47,7 +54,10 @@
         <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnL"><i class="material-icons right">arrow_back</i></a>
         <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnR"><i class="material-icons right">arrow_forward</i></a>
 
+        <a class="waves-effect waves-light mixtapeInfoSave btn">Save</a>
+        
     </div> <!--END tapeSelection DIV -->
+    
     <div class="box searchBox">
       <form>
         <div class="input-field">
@@ -58,8 +68,15 @@
             </div>
           </div>
           <a class="waves-effect waves-light btn">Search<i class="material-icons right">send</i></a>
+
+          <div class="searchDump">
+
+          </div>
         </div>
       </form>
+
+      <div class="searchDump"></div>
+
     </div> <!-- END searchBox -->
     <div class="box playlist">playlist</div>
     <div class="box recentHeader">recentHeader</div>
@@ -116,36 +133,7 @@
 
       
       
-<!-- <script> // Tape Image SlideShow
-  // May be able to move script in js file by adding onclick function to js instead of calling from button attribute. 
-    var slideIndex = 1;
-    showDivs(slideIndex);
-    
-    function plusDivs(n) {
-      showDivs(slideIndex += n);
-    }
-    
-    function currentDiv(n) {
-      showDivs(slideIndex = n);
-    }
-    
-    function showDivs(n) {
-      var i;
-      var x = document.getElementsByClassName("tapeImages");
-      var dots = document.getElementsByClassName("demo"); // demo is not a class in the tapeselection code.  
-      if (n > x.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = x.length}
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-      }
-      x[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " w3-opacity-off";
-    }
-  
-</script> // END Image SlideShow  -->
+
  
 
   <!-- Code to the JavaScript File -->
