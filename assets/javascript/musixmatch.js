@@ -74,6 +74,28 @@
 
 // MusixMatch Logic to move search items from table to Playlist
   // ==================================================================
+  $('.trackSelect').on('click', function() {
+    console.log('CLICK'); 
+    console.log(this); 
+
+
+    var tBody = $('.playlistWIP');
+    var tRow = $('<tr>');
+    var artistTd = $('<td class="artist">').text(artist);
+    var albumTd = $('<td class="album">').text(album);
+    var trackNameTd = $('<td class="trackName">').text(trackName);
+    var trackLengthTd = $('<td class="trackLength">').text(trackLength);
+  
+    // add track info to DOM in playlist 
+    tRow.append(artistTd, albumTd, trackNameTd, trackLengthTd);
+    tBody.append(tRow);
+
+  }); 
+
+  
+
+
+
 
 // ==================================================================
 
