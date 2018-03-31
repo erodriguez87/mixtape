@@ -21,31 +21,32 @@ body{
 .tapeImages {
   width: auto;
   height: auto;
-  position: relative; 
+  /* position: relative;  */
   z-index: 0; 
 }
 
-/* .arrowBtnL {
-  position: absolute;
+#arrowBtnL {
+  position: absolute; 
+  bottom: 50%; 
+  left: 2%; 
   z-index: 1; 
-  bottom: 0; 
-  left: 0; 
 }
 
-.arrowBtnR {
-  position: absolute;
+#arrowBtnR {
+  position: absolute; 
+  bottom: 50%; 
   z-index: 1; 
-  bottom: 0; 
-  right: 0; 
-} */
+  right: 2%; 
+}
 
 .container-table {
   display: table;
 }
+
 .vertical-center-row {
   display: table-cell;
   vertical-align: middle;
-}
+} */
 
 .panel {
   margin: 10px 80px 10px 80px; 
@@ -57,7 +58,6 @@ body{
      
 .tape {
   cursor:pointer
-
 }
 
 /* GRID LAYOUT */
@@ -66,12 +66,6 @@ body{
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows:minmax(50px, auto);
   grid-gap:1em;
-  /* justify-items:stretch;
-  align-items:stretch; */
-  /* grid-template-areas:
-    'header header header header header header'
-    'menu main main main right right'
-    'menu footer footer footer footer footer'; */
 }
 
 .wrapper > div{
@@ -89,14 +83,6 @@ body{
   grid-column:1/-1;
 }
 
-/* .LsideBar {
-  grid-column:1; grid-row:2/17; 
-}
-
-.RsideBar {
-  grid-column:6; grid-row:2/17;
-} */
-
 .footer {
   grid-column:1/-1;
 }
@@ -108,6 +94,8 @@ body{
 
 .tapeSelection {
   grid-column:3/5; 
+  position: relative; 
+  z-index: 0; 
   /* grid-row:2/6; */
 }
 
