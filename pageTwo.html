@@ -1,53 +1,75 @@
 <html lang="en-us"><head>
     <meta charset="UTF-8">
-    <title>Title Here</title>
+    <title>MXTP2</title>
     <meta name="viewport" content="width=device-width">
     <!-- Links to CSS, CDN, then custom below to override -->
     <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     
-    <title>Mixtape</title> 
+    <title>MXTP</title> 
     
   </head>
   
   <body>
     <div class="wrapper">
       <div class="box header">
-        <img src = "assets/images/logo.png">
+        <img src = "assets/images/logo.png"></a>
       </div>
       <div class="box mixtapeCover">mixtapeCover</div>
-      <div class="box finalPlaylist">finalPlaylist</div>
+
+      <div class="box finalPlaylist">
+          <div class="row section">
+              <div class="col">
+                <!-- Modal Trigger -->
+                <a class="waves-effect waves-light btn modal-trigger" href="#modalVideo">Video</a>
+              </div>
+            </div>
+            <!-- Modal Structure -->
+            <div id="modalVideo" class="modal">
+              <div class="modal-content">
+                  <div class="video-container">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/DMilXF7ENps?rel=0" frameborder="0" allowfullscreen></iframe></div>
+                  <div></div>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+              </div>
+            </div>
+      </div><!--end finalPlaylist-->
+
       <div class="box shareTunes">
-      <!-- modal html -->
+      <!-- share button/ modal -->
         <div class="row section">
-            <div class="col">
-              <!-- Modal Trigger -->
-              <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Share</a>
-            </div>
+          <div class="col">
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Share</a>
           </div>
-          <!-- Modal Structure -->
-          <div id="modal1" class="modal">
-            <div class="modal-content">
-              <h4>Modal Header</h4>
-              <a class="waves-effect waves-light btn-small"><i class="material-icons left">cloud</i>button</a>
-              <a class="waves-effect waves-light btn-small"><i class="material-icons left">cloud</i>button</a>
-              <a class="waves-effect waves-light btn-small"><i class="material-icons left">cloud</i>button</a>
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
+        </div>
+      <!-- modal structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Share Your Tape!</h4>
+              <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Facebook</a>
+              <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Twitter</a>
+              <a class="waves-effect waves-light btn-large"><i class="material-icons left">link</i>Link</a>
           </div>
-      </div>
+          <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+          </div>
+        </div>
+      <!-- end modal html -->
+      </div><!--end shareTunes-->
       <div class="box lyrics">lyrics</div>
       <div class="box footer">footer</div>
     </div>
 
     
-<!-- Code to the JavaScript File -->
+  <!-- Code to the JavaScript File -->
     <script src="assets/javascript/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   
