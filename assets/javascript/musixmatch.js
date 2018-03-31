@@ -37,6 +37,9 @@
         tRow.empty();
         tracks[i] = res.message.body.track_list[i].track.track_name
         artists[i] = res.message.body.track_list[i].track.artist_name
+        
+        trackLength = parseInt(res.message.body.track_list[0].track.track_length)
+
         trackLength[i] = parseInt(res.message.body.track_list[i].track.track_length)
         albumId[i] = res.message.body.track_list[i].track.album_id
           var trackTd = $('<td class="track">').text(tracks[i]);
