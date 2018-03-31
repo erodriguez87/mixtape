@@ -5,10 +5,12 @@
   <!-- Links to CSS, CDN, then custom below to override -->
   <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
@@ -16,7 +18,6 @@
   <script src="https://momentjs.com/downloads/moment.min.js"></script>
 
 
-  <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
           
 
@@ -32,57 +33,35 @@
     </div>
     <div class="box mixtapeInfo">
       <form>
-        <div class="row">
-          <div class="input-field col s8">
-            <input id="mixtapeName" type="text" class="validate">
-            <label for="mixtapeName">Name Your Mixtape: </label>
-          </div>
+        <div class="input-field">
+          <input id="mixtapeName" type="text" class="validate">
+          <label for="mixtapeName">Name Your Mixtape</label>
         </div>
-        <div class="row">
-          <div class="input-field col s8">
-            <input id="userName" type="text" class="validate">
-            <label for="userName">Made by: </label>
-          </div>
+        <div class="input-field">
+          <input id="userName" type="text" class="validate">
+          <label for="userName">Made by</label>
         </div>
-        <div class="row">
-          <div class="input-field col s8">
-              <input id="userEmail" type="email" class="validate">
-              <label for="userEmail">Email</label>
-          </div>
+        <div class="input-field">
+            <input id="userEmail" type="email" class="validate">
+            <label for="userEmail">Email</label>
         </div>
-        <a class="waves-effect waves-light mixtapeInfoSave btn">Save</a>
+        <div class="input-field">
+            <input id="description" type="text" class="validate">
+            <label for="description">Description</label>
+          </div>
+      <a class="waves-effect waves-light btn mixtapeInfoSave">Save</a>
       </form>
-      
+
     </div>
     <div class="box tapeSelection">
-      <!-- <div class="w3-content w3-display-container" style="max-width:800px"> -->
-        <div class="tapeSub">
-          <div>
-            <img class="tapeImages" id="tape1" src="assets/images/tape1.jpg" style="width:100%">
-          </div>
-          <div>
-            <img class="tapeImages" id="tape2" src="assets/images/tape2.png" style="width:100%">
-          </div>
-          <div>
-            <img class="tapeImages" id="tape3" src="assets/images/tape3.png" style="width:100%">
-          </div>
-          <div>
-            <img class="tapeImages" id="tape4" src="assets/images/tape4.jpg" style="width:100%">
-          </div>
-          <div>
-            <img class="tapeImages" id="tape5" src="assets/images/tape5.png" style="width:100%">
-          </div>
-          <div>
-            <img class="tapeImages" id="tape6" src="assets/images/tape6.jpg" style="width:100%">
-          </div>
-      </div>
-          
-        <!-- <button class="w3-button w3-display-left w3-black">&#10094;</button>
-        <button class="w3-button w3-display-right w3-black">&#10095;</button> -->
-      <!-- </div> -->
+      <div class="images"></div>
+      <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnL"><i class="material-icons right">arrow_back</i></a>
+      <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnR"><i class="material-icons right">arrow_forward</i></a>
     </div> <!--END tapeSelection DIV -->
 
+
   <!--searchBox-->
+
     <div class="box searchBox">
       <form>
         <div class="input-field">
@@ -92,15 +71,9 @@
               <label for="search">Search Music</label>
             </div>
           </div>
-          <button class="searchBtn btn waves-effect waves-light" type="submit" name="action">Search
-            <i class="material-icons right">send</i>
-          </button>
-          <div class="searchDump">
-
-          </div>
+          <a class="searchBtn waves-effect waves-light btn">Search<i class="material-icons right">send</i></a>
         </div>
       </form>
-
       <div class="searchDump"></div>
 
   </div><!-- END searchBox -->
@@ -110,6 +83,26 @@
   </div><!--end Playlist-->
   
   <!-- recent playlists -->
+    </div> <!-- END searchBox -->
+    <div class="box playlist">playlist
+        <table  class="highlight">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Artist</th>
+                <th>Song</th>
+              </tr>
+            </thead>
+          
+            <tbody class="playlistWIP">
+              <tr>
+                <td class="songNum">1</td>
+                <td class="artist"></td>
+                <td class="song"></td>
+              </tr>        
+            </tbody>
+          </table>
+    </div>
     <div class="box recentHeader">recentHeader</div>
     <div class="box recentPlaylist1">recentPlaylist1
       <div class="card">
@@ -164,31 +157,7 @@
 
       
       
-<!-- <script> // Tape Image SlideShow
-  // May be able to move script in js file by adding onclick function to js instead of calling from button attribute. 
-    var slideIndex = 1;
-    showDivs(slideIndex);
-    
-    function plusDivs(n) {
-      showDivs(slideIndex += n);
-    }
-    
-    function currentDiv(n) {
-      showDivs(slideIndex = n);
-    }
-    
-    function showDivs(n) {
-      var i;
-      var x = document.getElementsByClassName("tapeImages");
-      if (n > x.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = x.length}
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-      }
-      x[slideIndex-1].style.display = "block";
-    }
-  
-</script> // END Image SlideShow  -->
+
  
 
   <!-- Code to the JavaScript File -->
