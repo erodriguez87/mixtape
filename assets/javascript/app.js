@@ -24,7 +24,6 @@
   // ==================================================================
   // Need to get the trackname and artist passed from music match. This section searches the youtube API for a mix of the track and artist and returns the top 10 results.
 
-
   function searchYoutube(trackPass,artistPass) {
     // set variables for search and establish youtube key
     var trackName = trackPass; 
@@ -39,7 +38,6 @@
       url: queryURL,
       method: 'GET'
     }).then(function(response) {
-      console.log(queryURL);
       var objectsRet = response.items;
       console.log(objectsRet);
       
@@ -181,44 +179,67 @@
         jsonPlaylist.push({playlist: tmp_values}); //key
         i = i+3; 
       }
+      // genFinPlaylist(jsonPlaylist); 
     }
 
-
     console.log(data); 
-    console.log(jsonPlaylist); 
+    console.log('json needed ' + jsonPlaylist); 
     console.log(mixtapeInfo);
 
-    GetCellValues(); 
+    GetCellValues();
+    // genFinPlaylist(jsonPlaylist); 
   })
 
 // ==================================================================
 
 // Final Playlist
   function genFinPlaylist () {
-    
-      console.log('inside fin playlist')
-      $('.modal-trigger').leanModal();
-      $('.finalPlaylist').empty(); //clears whatever was in the playlist before
-    
-      var tBody = $('.finalPlaylist');
-      var tbl = $('<table>');
-      var tblH = $('<tr><th>Album Cover</th><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Play</th><th>Youtube</th>')
-      tbl.append(tblH);
+    console.log('in fin playlist');
+      // $('.modal-trigger').leanModal();
+      $('.finalPlaylist').empty(); //clears whatever was in the playlist before showing the new one
 
+      //  set up variables for the table
+      var tBody = $('.finalPlaylist');
+      var tbl   = $('<table>');
+      var tblH  = $('<tr><th>Album Cover</th><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Play</th><th>Youtube</th>')
+      var imgDisplay = $('<img>');
+      var ytDisp = $('<img>');
+      
+      
+
+      // set up table headers
+      tbl.append(tblH);
       //for loop to loop through the object returned from firebase
-      for (i = 0; i < 10; i++) {
+      for (i = 0; i < 2; i++) {
         var tRow = $('<tr>'); 
         tRow.empty(); // clears the row after each loopthrough and each append
+        ytDisp.empty();
+        ytDisp.attr('src','assets/images/youtube.png');
+        ytDisp.attr('height', '50px');
+        ytDisp.attr('width', '50px');
+
+        imgDisplay.attr('height', '50px');
+        imgDisplay.attr('width', '50px');
+
+          // var artistTd = $('<td class="artist">').text(jsonPlaylist.playlist.artist);
+          var albumCovTd = $('<td class="AlbumArt">').append(imgDisplay);
+          var artistTd = $('<td class="Artist">').text('test');
+          var albumtTd = $('<td class="AlbumName">').text('test');
+          var trackTd = $('<td class="trackName">').text('test');
+          var trackLengthTd = $('<td class="tlength">').text('test');
+          var playTd = $('<td class="playMusic">').text('test');
+          var ytTd = $('<td class="youtube">').append(ytDisp);
+
           tRow.addClass('trackSelect hoverable')
-          tRow.append();
+          tRow.append(albumCovTd,artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
           tbl.append(tRow);
       }
-
     // Adds the table to the html  
     tbl.addClass("table highlight");
     tBody.append(tbl);
-    };
-    genFinPlaylist();
+  };
+  genFinPlaylist(jsonPlaylist);
+
 // ==================================================================
 
   

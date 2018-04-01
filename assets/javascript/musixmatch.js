@@ -1,4 +1,4 @@
-//MusixMatch API connection
+//MusixMatch API connection and Searching for Songs
   // ==================================================================
   // Connection to musixmatch service, returns based on user search from html. It also passes a value into the youtube API Search. The request we made calls a jsonp file. That required a special function to parse it correctly.
   $('.searchBtn').on('click', function (event) {
