@@ -202,8 +202,7 @@
       var tBody = $('.finalPlaylist');
       var tbl   = $('<table>');
       var tblH  = $('<tr><th>Album Cover</th><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Play</th><th>Youtube</th>')
-      var imgDisplay = $('<img>');
-      var ytDisp = $('<img>');
+      
       
       
 
@@ -212,8 +211,11 @@
       //for loop to loop through the object returned from firebase
       for (i = 0; i < 2; i++) {
         var tRow = $('<tr>'); 
+        var imgDisplay = $('<img>');
+        var ytDisp = $('<img>');
         tRow.empty(); // clears the row after each loopthrough and each append
         ytDisp.empty();
+
         ytDisp.attr('src','assets/images/youtube.png');
         ytDisp.attr('height', '50px');
         ytDisp.attr('width', '50px');
