@@ -1,10 +1,10 @@
 // Mixtape Logic
-// Wait for the page to finish loading
-var data = [];
-var jsonPlaylist = []; //declare object
-
+// Wait for the page to finish loading and establish global variables
+  var data = [];
+  var jsonPlaylist = []; //declare object
+  $(document).ready(function() {
 // ==================================================================
-$(document).ready(function() {
+
   
 // Begin Firebase integration ======================================
 
@@ -218,13 +218,9 @@ $(document).ready(function() {
     tbl.addClass("table highlight");
     tBody.append(tbl);
     };
+    genFinPlaylist();
 // ==================================================================
 
-  genFinPlaylist();
   
-});
-
   
-
-}); //END document.ready()
-
+}); // End Document.ready
