@@ -1,13 +1,13 @@
 <html lang="en-us"><head>
   <meta charset="UTF-8">
-  <title>Title Here</title>
+  <title>MXTP</title>
   <meta name="viewport" content="width=device-width">
-  <!-- Links to CSS, CDN, then custom below to override -->
+<!-- Links to CSS, CDN, then custom below to override -->
   <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
 
@@ -26,12 +26,12 @@
 </head>
 
 <body>
-  
+<!--tapeSelection div --> 
   <div class="wrapper">
-    <div class="box header">
-      <h1>Mixtape Maker</h1>
+    <div class="box header white">
+      <img src = "assets/images/logo.png"></a>
     </div>
-    <div class="box mixtapeInfo">
+    <div class="box mixtapeInfo white">
       <form>
         <div class="input-field">
           <input id="mixtapeName" type="text" class="validate">
@@ -53,13 +53,16 @@
       </form>
 
     </div>
-    <div class="box tapeSelection">
+    <div class="box tapeSelection white">
       <div class="images"></div>
       <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnL"><i class="material-icons right">arrow_back</i></a>
       <a class="waves-effect waves-light btn-large pulse tapeBtns" id="arrowBtnR"><i class="material-icons right">arrow_forward</i></a>
     </div> <!--END tapeSelection DIV -->
-    
-    <div class="box searchBox">
+
+
+<!--searchBox-->
+
+    <div class="box searchBox white">
       <form>
         <div class="input-field">
           <div class="row">
@@ -72,33 +75,33 @@
         </div>
       </form>
       <div class="searchDump"></div>
-
     </div> <!-- END searchBox -->
-    <div class="box playlist">playlist
-        <table  class="highlight">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Artist</th>
-                <th>Song</th>
-              </tr>
-            </thead>
-          
-            <tbody class="playlistWIP">
-              <tr>
-                <td class="songNum">1</td>
-                <td class="artist"></td>
-                <td class="song"></td>
-              </tr>        
-            </tbody>
-          </table>
-    </div>
-    <div class="box recentHeader">recentHeader</div>
-    <div class="box recentPlaylist1">recentPlaylist1
+      
+  <!--playlist-->
+
+    <div class="box playlist white">
+      <table  class="highlight">
+          <thead>
+            <tr>
+              <th>Artist</th>
+              <th>Album</th>
+              <th>Track Name</th>
+              <th>Track Length</th>
+            </tr>
+          </thead>
+        
+          <tbody class="playlistWIP" id="playlistComplete">
+          </tbody>
+        </table>
+    </div> <!-- END playlist -->
+      
+    <div class="box recentHeader white center-align"><h3>Recently Added Playlists</h3></div>
+    <div class="box recentPlaylist1 white center-align">
+
       <div class="card">
         <div class="card-image">
           <img src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg">
-          <span class="card-title">Card Title</span>
+          <span class="card-title">Playlist</span>
         </div>
         <div class="card-content">
           <p>I am a very simple card. I am good at containing small bits of information.
@@ -106,11 +109,11 @@
         </div>
       </div>
     </div> <!-- END Playlist Div -->
-    <div class="box recentPlaylist2">recentPlaylist2
+    <div class="box recentPlaylist2 white center-align">
       <div class="card">
           <div class="card-image">
             <img src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg">
-            <span class="card-title">Card Title</span>
+            <span class="card-title">Playlist</span>
           </div>
           <div class="card-content">
             <p>I am a very simple card. I am good at containing small bits of information.
@@ -118,11 +121,11 @@
           </div>
         </div>
     </div> <!-- END Playlist Div -->
-    <div class="box recentPlaylist3">recentPlaylist3
+    <div class="box recentPlaylist3 white center-align">
       <div class="card">
           <div class="card-image">
             <img src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg">
-            <span class="card-title">Card Title</span>
+            <span class="card-title">Playlist</span>
           </div>
           <div class="card-content">
             <p>I am a very simple card. I am good at containing small bits of information.
@@ -130,11 +133,11 @@
           </div>
         </div>
     </div> <!-- END Playlist Div -->
-    <div class="box recentPlaylist4">recentPlaylist4
+    <div class="box recentPlaylist4 white center-align">
       <div class="card">
           <div class="card-image">
             <img src="http://pluspng.com/img-png/casette-hd-png-audio-cassette-tape-1993-3008.jpg">
-            <span class="card-title">Card Title</span>
+            <span class="card-title">Playlist</span>
           </div>
           <div class="card-content">
             <p>I am a very simple card. I am good at containing small bits of information.
@@ -142,13 +145,8 @@
           </div>
         </div>
     </div> <!-- END Playlist Div -->
-    <div class="box footer">footer</div>
-  </div>
-
-      
-      
-
- 
+    <div class="box footer pink darken-3 center-align"><h5>FOOTER</h5></div>
+  </div><!--end recent playlists --> 
 
   <!-- Code to the JavaScript File -->
   <script src="assets/javascript/app.js"></script>
@@ -156,13 +154,3 @@
   
 
 </body></html>
-
-<!-- 
-<table class="table">
-  <thead>
-  
-  </thead>
-
-  <tbody class = ""></tbody>
-  
-</table> -->

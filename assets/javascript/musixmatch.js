@@ -69,6 +69,19 @@
 
 // MusixMatch Logic to move search items from table to Playlist
   // ==================================================================
+  $('.searchDump').on('click', '.trackSelect', function() {
+    console.log(this); 
+    $('.playlistWIP').append(this); 
+  }); 
+
+  $('.playlistWIP').on('click', '.trackSelect', function() {
+    $(this).remove(); 
+  }); 
+
+
+
+
+
 
 // ==================================================================
 
