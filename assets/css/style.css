@@ -129,8 +129,22 @@ body{
 }
 
 
-.recentPlaylist {
-  
+.recentPlaylist > .recentTapes {
+  position: relative; 
+  z-index: 0; 
+}
+
+.mixtapeLabel {
+  position: absolute; 
+  z-index: 2; 
+  top: 8%; 
+  left: 30%; 
+  text-align:center; 
+  background: rgba(255, 255, 255, 0.61); 
+}
+
+.card-content {
+  font-size: 12px; 
 }
 
 /* .recentPlaylist1 {
