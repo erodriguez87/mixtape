@@ -136,9 +136,9 @@
 // ==================================================================
 
 // Modal =============================================================
-  // $(document).ready(function(){
-  //   $('.modal-trigger').leanModal();
-  // });
+    $(document).ready(function(){
+      $('.modal-trigger').leanModal();
+    });
 // ==================================================================
   
 // =====  Mixtape Info ===============================================
@@ -220,7 +220,7 @@
 // Final Playlist
   function genFinPlaylist () {
     console.log('in fin playlist');
-      // $('.modal-trigger').leanModal();
+      $('.modal-trigger').leanModal();
       $('.finalPlaylist').empty(); //clears whatever was in the playlist before showing the new one
 
       //  set up variables for the table
@@ -243,6 +243,7 @@
         var tapeLabel = $('<div class ="mixtapeLabel">')
           console.log(fbFinalMixtapeName);
           tapeLabel.append('<h5>' + fbFinalMixtapeName + '</h5>'); 
+          
         var tapeImage = $('<img class="finalMixtapeImage">'); 
           tapeImage.attr('src', fbFinalUserTapeSelection); 
           $('.mixtapeCover').append(tapeImage, tapeLabel); 
