@@ -42,7 +42,7 @@
       var tempImageDiv = $('<div class="card-image">'); 
         var tapeLabel = $('<div class ="mixtapeLabel">')
           console.log(fbMixtapeName);
-          tapeLabel.append('<h6>' + fbMixtapeName + '</h5>'); 
+          tapeLabel.append('<h5>' + fbMixtapeName + '</h5>'); 
         var tapeImage = $('<img class="recentTapes">'); 
           tapeImage.attr('src', fbUserTapeSelection); 
           tempImageDiv.append(tapeImage, tapeLabel); 
@@ -66,7 +66,7 @@
 
   // ====================================================
 
-
+  
 // ================================================================
 
 // Youtube API ======================================================
@@ -230,53 +230,99 @@
             
       // set up table headers
       tbl.append(tblH);
-      //for loop to loop through the object returned from firebase
-      for (i = 0; i < 9; i++) {
-        var tRow = $('<tr>'); 
-        var imgDisplay = $('<img>');
-        var ytDisp = $('<img>');
-        var playBtnLink = $('<a>');
-        var playBtn = $('<i>');
-        var modalBtn = $('<a>');
 
-        tRow.empty(); // clears the row after each loopthrough and each append
-        ytDisp.empty(); //clears the youtube icon display so it can be re-applied
-        playBtnLink.empty(); // clears the attached music link before
+      // ===== pull from DB to populate FINAL playlist=======
+      database.ref().limitToLast(1).on('child_added', function(snapshot, prevChildKey) {
+              
+        var fbFinalMixtapeName = snapshot.child('mixtapeInfo/mixtapeName').val();
+        var fbFinalUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
+        var fbFinalPlaylist = snapshot.child('mixtapeInfo/playlist').val();
+        // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
+        console.log('fbFinalPlaylist', fbFinalPlaylist[0]);
 
-        ytDisp.attr('src','assets/images/youtube.png');
-        ytDisp.attr('href','#modal2');
-        ytDisp.attr('height', '55px');
-        ytDisp.attr('width', '55px');
-        ytDisp.addClass('waves-effect waves-light modal-trigger');
+        var tapeLabel = $('<div class ="mixtapeLabel">')
+          console.log(fbFinalMixtapeName);
+          tapeLabel.append('<h5>' + fbFinalMixtapeName + '</h5>'); 
+        var tapeImage = $('<img class="finalMixtapeImage">'); 
+          tapeImage.attr('src', fbFinalUserTapeSelection); 
+          $('.mixtapeCover').append(tapeImage, tapeLabel); 
 
-        imgDisplay.attr('height', '55px'); //album art variable height
-        imgDisplay.attr('width', '55px'); //album art variable width
 
-        playBtn.addClass('material-icons');
-        playBtn.text('send');
 
-        playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light green');
-        playBtnLink.attr('href','https://www.youtube.com/embed/DMilXF7ENps?rel=0');
-        playBtnLink.append(playBtn);
+        //for loop to loop through the object returned from firebase
+        for (i = 0; i < fbFinalPlaylist[0].values.length; i++) {
+          var artist = fbFinalPlaylist[0].values[i].artist; 
+            // console.log(artist); 
+          var album = fbFinalPlaylist[0].values[i].album; 
+          var track = fbFinalPlaylist[0].values[i].trackName; 
+          var trackLength = fbFinalPlaylist[0].values[i].trackLength; 
+            console.log(artist, album, track, trackLength); 
 
-        modalBtn.addClass('waves-effect waves-light modal-trigger');
-        modalBtn.attr('href','#modal2');
-        modalBtn.append(ytDisp);
 
-          // append all the table data elemnts to the rows and then row to the table
-          // var artistTd = $('<td class="artist">').text(jsonPlaylist.playlist.artist);
-          var albumCovTd = $('<td class="AlbumArt">').append(imgDisplay);
-          var artistTd = $('<td class="Artist">').text('test');
-          var albumtTd = $('<td class="AlbumName">').text('test');
-          var trackTd = $('<td class="trackName">').text('test');
-          var trackLengthTd = $('<td class="tlength">').text('test');
-          var playTd = $('<td class="playMusic">').append(playBtnLink);
-          var ytTd = $('<td class="youtube modal-trigger">').append(modalBtn);
+          var tRow = $('<tr>'); 
+          var imgDisplay = $('<img>');
+          var ytDisp = $('<img>');
+          var playBtnLink = $('<a>');
+          var playBtn = $('<i>');
+          var modalBtn = $('<a>');
+  
+          tRow.empty(); // clears the row after each loopthrough and each append
+          ytDisp.empty(); //clears the youtube icon display so it can be re-applied
+          playBtnLink.empty(); // clears the attached music link before
+  
+          ytDisp.attr('src','assets/images/youtube.png');
+          ytDisp.attr('href','#modal2');
+          ytDisp.attr('height', '55px');
+          ytDisp.attr('width', '55px');
+          ytDisp.addClass('waves-effect waves-light modal-trigger');
+  
+          imgDisplay.attr('height', '55px'); //album art variable height
+          imgDisplay.attr('width', '55px'); //album art variable width
+  
+          playBtn.addClass('material-icons');
+          playBtn.text('send');
+  
+          playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light green');
+          playBtnLink.attr('href','https://www.youtube.com/embed/DMilXF7ENps?rel=0');
+          playBtnLink.append(playBtn);
+  
+          modalBtn.addClass('waves-effect waves-light modal-trigger');
+          modalBtn.attr('href','#modal2');
+          modalBtn.append(ytDisp);
+  
+          
+  
+  
+  
+            // append all the table data elemnts to the rows and then row to the table
+            // var artistTd = $('<td class="artist">').text(jsonPlaylist.playlist.artist);
+            var albumCovTd = $('<td class="AlbumArt">').append(imgDisplay);
+            var artistTd = $('<td class="Artist">').text(artist);
+            var albumtTd = $('<td class="AlbumName">').text(album);
+            var trackTd = $('<td class="trackName">').text(track);
+            var trackLengthTd = $('<td class="tlength">').text(trackLength);
+            var playTd = $('<td class="playMusic">').append(playBtnLink);
+            var ytTd = $('<td class="youtube modal-trigger">').append(modalBtn);
+  
+            tRow.addClass('trackSelect hoverable')
+            tRow.append(albumCovTd,artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
+            tbl.append(tRow);
+        } // END for loop
 
-          tRow.addClass('trackSelect hoverable')
-          tRow.append(albumCovTd,artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
-          tbl.append(tRow);
-      }
+
+
+      }); 
+
+
+      // ====================================================
+
+
+
+
+
+
+
+
     // Adds the table to the html  
     tbl.addClass("table highlight");
     tBody.append(tbl);
