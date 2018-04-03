@@ -6,7 +6,7 @@
 // ==================================================================
 
   
-// Begin Firebase integration ======================================
+// ==== Firebase integration ======================================
 
   var config = {
     apiKey: "AIzaSyAG5Hd-FWiTUqqHFLM6ag-eksuRF6BHVZ4",
@@ -18,29 +18,6 @@
   };
   firebase.initializeApp(config);
   var database = firebase.database();
-
-
-
-
-  // database.ref().orderByChild('timestamp').startAt(Date.now()).on('child_added', function(snapshot) {
-  //   console.log('new record', snap.key());
-  // });
-
-//   var ref = firebase.database().ref("dinosaurs");
-// ref.orderByChild("height").limitToFirst(2).on("child_added", function(snapshot) {
-  // This will be called exactly two times (unless there are less than two
-  // dinosaurs in the Database).
-
-  // // pull from DB most recent playlists
-  // database.ref('value').orderByChild('timestamp').limitToLast(4).on('child_added', function(snapshot) {
-  //   var mixtapeName = snapshot.val().mixtapeName; 
-
-  //   // all records after the last continue to invoke this function
-  //   console.log(mixtapeName);
-  // });
-
-  // database.ref.limit(4).on('child_added', function(snapshot) {
-
 
   // ===== pull from DB most recent playlists ============
 
@@ -84,30 +61,13 @@
       $(tempDiv).append(tempCardDiv); 
       $(tempDiv).insertAfter('.recentHeader'); 
 
-
-
-
-
     });
 
 
-  
-
   // ====================================================
 
-  // var mixtapeInfo = {
-  //   // timeStamp: firebase.database.ServerValue.TIMESTAMP,
-  //   mixtapeName: mixtapeName,
-  //   userName: userName, 
-  //   userEmail: userEmail,
-  //   description: description,
-  //   userTapeSelection: userTapeSelection, 
-  //   playlist: jsonPlaylist,
-  //   // playlistDiv: playlistDiv
-  // }
 
-
-// ==================================================================
+// ================================================================
 
 // Youtube API ======================================================
   // ==================================================================
