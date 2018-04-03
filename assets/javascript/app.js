@@ -50,8 +50,6 @@
         vidUrl: 'https://www.youtube.com/embed/' + objectsRet[0].id.videoId // iframe link
         // use ?autoplay=1& for autoplay
       };
-      // console.log(youObj.iframeUrl);
-      // console.log(youObj.vidUrl);
     });
   }
 // ===== Mixtape Info =============================================================
@@ -202,35 +200,51 @@
       var tBody = $('.finalPlaylist');
       var tbl   = $('<table>');
       var tblH  = $('<tr><th>Album Cover</th><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Play</th><th>Youtube</th>')
-      
-      
-      
-
+            
       // set up table headers
       tbl.append(tblH);
       //for loop to loop through the object returned from firebase
-      for (i = 0; i < 2; i++) {
+      for (i = 0; i < 9; i++) {
         var tRow = $('<tr>'); 
         var imgDisplay = $('<img>');
         var ytDisp = $('<img>');
+        var playBtnLink = $('<a>');
+        var playBtn = $('<i>');
+        var modalBtn = $('<a>');
+
         tRow.empty(); // clears the row after each loopthrough and each append
-        ytDisp.empty();
+        ytDisp.empty(); //clears the youtube icon display so it can be re-applied
+        playBtnLink.empty(); // clears the attached music link before
 
         ytDisp.attr('src','assets/images/youtube.png');
-        ytDisp.attr('height', '50px');
-        ytDisp.attr('width', '50px');
+        ytDisp.attr('href','#modal2');
+        ytDisp.attr('height', '55px');
+        ytDisp.attr('width', '55px');
+        ytDisp.addClass('waves-effect waves-light modal-trigger');
 
-        imgDisplay.attr('height', '50px');
-        imgDisplay.attr('width', '50px');
+        imgDisplay.attr('height', '55px'); //album art variable height
+        imgDisplay.attr('width', '55px'); //album art variable width
 
+        playBtn.addClass('material-icons');
+        playBtn.text('send');
+
+        playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light green');
+        playBtnLink.attr('href','https://www.youtube.com/embed/DMilXF7ENps?rel=0');
+        playBtnLink.append(playBtn);
+
+        modalBtn.addClass('waves-effect waves-light modal-trigger');
+        modalBtn.attr('href','#modal2');
+        modalBtn.append(ytDisp);
+
+          // append all the table data elemnts to the rows and then row to the table
           // var artistTd = $('<td class="artist">').text(jsonPlaylist.playlist.artist);
           var albumCovTd = $('<td class="AlbumArt">').append(imgDisplay);
           var artistTd = $('<td class="Artist">').text('test');
           var albumtTd = $('<td class="AlbumName">').text('test');
           var trackTd = $('<td class="trackName">').text('test');
           var trackLengthTd = $('<td class="tlength">').text('test');
-          var playTd = $('<td class="playMusic">').text('test');
-          var ytTd = $('<td class="youtube">').append(ytDisp);
+          var playTd = $('<td class="playMusic">').append(playBtnLink);
+          var ytTd = $('<td class="youtube modal-trigger">').append(modalBtn);
 
           tRow.addClass('trackSelect hoverable')
           tRow.append(albumCovTd,artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
