@@ -8,16 +8,77 @@
   
 // Begin Firebase integration ======================================
 
-    var config = {
-      apikey: "AIzaSyDKWABfmD5z9i_HHVeWAbSxukH1yZqeoAE",
-      authDomain: "susangt2018.firebaseapp.com",
-      databaseURL: "https://susangt2018.firebaseio.com",
-      projectId: "susangt2018",
-      storageBucket: "susangt2018.appspot.com",
-      messagingSenderId: "271189265430"
-    };
-    firebase.initializeApp(config);
-    var database = firebase.database();
+  var config = {
+    apiKey: "AIzaSyAG5Hd-FWiTUqqHFLM6ag-eksuRF6BHVZ4",
+    authDomain: "mxtp-68055.firebaseapp.com",
+    databaseURL: "https://mxtp-68055.firebaseio.com",
+    projectId: "mxtp-68055",
+    storageBucket: "mxtp-68055.appspot.com",
+    messagingSenderId: "560302073331"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+
+
+
+
+  // database.ref().orderByChild('timestamp').startAt(Date.now()).on('child_added', function(snapshot) {
+  //   console.log('new record', snap.key());
+  // });
+
+//   var ref = firebase.database().ref("dinosaurs");
+// ref.orderByChild("height").limitToFirst(2).on("child_added", function(snapshot) {
+  // This will be called exactly two times (unless there are less than two
+  // dinosaurs in the Database).
+
+  // // pull from DB most recent playlists
+  // database.ref('value').orderByChild('timestamp').limitToLast(4).on('child_added', function(snapshot) {
+  //   var mixtapeName = snapshot.val().mixtapeName; 
+
+  //   // all records after the last continue to invoke this function
+  //   console.log(mixtapeName);
+  // });
+
+  // database.ref.limit(4).on('child_added', function(snapshot) {
+
+
+  // ===== pull from DB most recent playlists ============
+
+    database.ref().limitToLast(4).on('child_added', function(snapshot, prevChildKey) {
+      
+      var fbMixtapeName = snapshot.child('mixtapeInfo/mixtapeName').val();
+      var fbPlaylist = snapshot.child('mixtapeInfo/playlist').val();
+      var fbUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
+
+      var recentPlayist1 = $('<div class = "">');
+
+
+
+      console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
+      // console.log(fbPlaylist[0].values[0]);
+
+
+
+
+    });
+
+
+  
+
+  // ====================================================
+
+  // var mixtapeInfo = {
+  //   // timeStamp: firebase.database.ServerValue.TIMESTAMP,
+  //   mixtapeName: mixtapeName,
+  //   userName: userName, 
+  //   userEmail: userEmail,
+  //   description: description,
+  //   userTapeSelection: userTapeSelection, 
+  //   playlist: jsonPlaylist,
+  //   // playlistDiv: playlistDiv
+  // }
+
+
 // ==================================================================
 
 // Youtube API ======================================================
@@ -52,37 +113,6 @@
       };
     });
   }
-// ===== Mixtape Info =============================================================
-  // Tape Selector
-
-  // set variables for search and establish youtube key
-  var trackName = 'dare you to move'; 
-  var artist = 'switchfoot';
-  var searchString = trackName + " " + artist;
-  var ytKey = 'AIzaSyC2Ztkch3B2cHJIwLRpZpwzCw4IM6UqwlU';
-  var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=10&key='+ytKey
-
-  // ajax call that returns the title of the first video, a high quality thumbnail, the url for the thumbnail and the video id. this video id is used for an embedded video player for the top result video
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).then(function(response) {
-    console.log(queryURL);
-    var objectsRet = response.items;
-    console.log(objectsRet);
-    
-    // object that holds all the video elements returned from the api call
-    var youObj = {
-      title : objectsRet[0].snippet.title, //video title
-      thumbHigh : objectsRet[0].snippet.thumbnails.high.url, //video thumbnail
-      embedId: objectsRet[0].id.videoId, //id of video for search iframe
-      iframeUrl : "<iframe id='ytplayer' type='text/html' width='640' height='360' src='https://www.youtube.com/embed/'" + objectsRet[0].id.videoId + "frameborder='0'></iframe>",
-      vidUrl: 'https://www.youtube.com/embed/' + objectsRet[0].id.videoId // iframe link
-      // use ?autoplay=1& for autoplay
-    };
-    // console.log(youObj.iframeUrl);
-    // console.log(youObj.vidUrl);
-  });
 // ==================================================================
 
 // =====Tape Selector ===============================================
@@ -118,9 +148,9 @@
 // ==================================================================
 
 // Modal =============================================================
-  $(document).ready(function(){
-    $('.modal-trigger').leanModal();
-  });
+  // $(document).ready(function(){
+  //   $('.modal-trigger').leanModal();
+  // });
 // ==================================================================
   
 // =====  Mixtape Info ===============================================
@@ -132,15 +162,16 @@
     var userName = $('#userName').val(); 
     var userEmail = $('#userEmail').val();   
     var description = $('#description').val();   
-    var playlistDiv = $('.playlistWIP'); 
+    // var playlistDiv = $('.playlistWIP'); 
     var mixtapeInfo = {
+      // timeStamp: firebase.database.ServerValue.TIMESTAMP,
       mixtapeName: mixtapeName,
       userName: userName, 
       userEmail: userEmail,
       description: description,
       userTapeSelection: userTapeSelection, 
       playlist: jsonPlaylist,
-      playlistDiv: playlistDiv
+      // playlistDiv: playlistDiv
     }
 
     // count how many rows in the table 
@@ -160,7 +191,7 @@
       }
   
       for (var i=0; i< data.length; i++) {
-        var tmp_values = [];
+        var values = [];
         var tmp_key = []; 
         
         for (var i=0; i< data.length; i++) {
@@ -171,22 +202,30 @@
           var trackLengthInfo = data[i+3]; 
           i = i+3; 
       
-          tmp_values.push({artist: artistInfo, album: albumInfo, trackName: trackNameInfo, trackLength: trackLengthInfo}); //label + value respectively 
+          values.push({artist: artistInfo, album: albumInfo, trackName: trackNameInfo, trackLength: trackLengthInfo}); //label + value respectively 
         }
           
-        jsonPlaylist.push({playlist: tmp_values}); //key
+        jsonPlaylist.push({values}); //key?
         i = i+3; 
       }
       // genFinPlaylist(jsonPlaylist); 
     }
 
     console.log(data); 
-    console.log('json needed ' + jsonPlaylist); 
+    console.log(jsonPlaylist); 
     console.log(mixtapeInfo);
 
     GetCellValues();
     // genFinPlaylist(jsonPlaylist); 
+
+    database.ref().push({
+      timestamp: firebase.database.ServerValue.TIMESTAMP,
+      mixtapeInfo: mixtapeInfo
+    }); 
+
   })
+
+
 
 // ==================================================================
 

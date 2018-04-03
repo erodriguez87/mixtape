@@ -128,25 +128,26 @@ body{
   /* grid-row:11; */
 }
 
-.recentPlaylist1 {
+
+.recentPlaylist {
+  
+}
+
+/* .recentPlaylist1 {
   grid-column:1; 
-  /* grid-row:12/17; */
 }
 
 .recentPlaylist2 {
   grid-column:2; 
-  /* grid-row:12/17; */
 }
 
 .recentPlaylist3 {
   grid-column:3; 
-  /* grid-row:12/17; */
 }
 
 .recentPlaylist4 {
   grid-column:4; 
-  /* grid-row:12/17; */
-}
+} */
 
 /* PAGE TWO */
 .mixtapeCover {
