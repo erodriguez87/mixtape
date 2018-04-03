@@ -49,13 +49,41 @@
       var fbMixtapeName = snapshot.child('mixtapeInfo/mixtapeName').val();
       var fbPlaylist = snapshot.child('mixtapeInfo/playlist').val();
       var fbUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
+      // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
 
-      var recentPlayist1 = $('<div class = "">');
+      console.log(fbPlaylist[0].values[0].trackName);
+      var song1 = fbPlaylist[0].values[0].trackName + ' by ' + fbPlaylist[0].values[0].artist; 
+      var song2 = fbPlaylist[0].values[1].trackName + ' by ' + fbPlaylist[0].values[1].artist; 
+      var song3 = fbPlaylist[0].values[2].trackName + ' by ' + fbPlaylist[0].values[2].artist; 
+      var song4 = fbPlaylist[0].values[3].trackName + ' by ' + fbPlaylist[0].values[3].artist; 
+      var song5 = fbPlaylist[0].values[4].trackName + ' by ' + fbPlaylist[0].values[4].artist; 
 
 
+      // === create new divs for recent playlists
+      var tempDiv = $('<div class = "box recentPlaylist white center-align">');
+      var tempCardDiv = $('<div class="card">'); 
+      var tempImageDiv = $('<div class="card-image">'); 
+        var tapeLabel = $('<div class ="mixtapeLabel">')
+          console.log(fbMixtapeName);
+          tapeLabel.append('<h6>' + fbMixtapeName + '</h5>'); 
+        var tapeImage = $('<img class="recentTapes">'); 
+          tapeImage.attr('src', fbUserTapeSelection); 
+          tempImageDiv.append(tapeImage, tapeLabel); 
+      var tempPlaylistDiv = $('<div class="card-content">'); 
+        var songs = $('<ul>'); 
+        songs.append('<li>', song1);
+        songs.append('<li>', song2);
+        songs.append('<li>', song3);
+        songs.append('<li>', song4);
+        songs.append('<li>', song5);
 
-      console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
-      // console.log(fbPlaylist[0].values[0]);
+
+        tempPlaylistDiv.html(songs); 
+
+      $(tempCardDiv).append(tempImageDiv,tempPlaylistDiv);
+      $(tempDiv).append(tempCardDiv); 
+      $(tempDiv).insertAfter('.recentHeader'); 
+
 
 
 
