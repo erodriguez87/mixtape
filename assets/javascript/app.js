@@ -237,6 +237,7 @@
         var fbFinalMixtapeName = snapshot.child('mixtapeInfo/mixtapeName').val();
         var fbFinalUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
         var fbFinalPlaylist = snapshot.child('mixtapeInfo/playlist').val();
+        var fbFinalUserName = snapshot.child('mixtapeInfo/userName').val();
         // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
         console.log('fbFinalPlaylist', fbFinalPlaylist[0]);
 
@@ -247,6 +248,12 @@
         var tapeImage = $('<img class="finalMixtapeImage">'); 
           tapeImage.attr('src', fbFinalUserTapeSelection); 
           $('.mixtapeCover').append(tapeImage, tapeLabel); 
+          // tapeImage.prepend('<h2>' + fbFinalUserName + '</h2>');
+          
+        // var userDiv;
+        // console.log(fbFinalUserName);
+        // userDiv.addClass("userInfo");
+        // userDiv.append('<h2>' + 'Mixtape By: ' + fbFinalUserName + '</h2>');
 
 
 
