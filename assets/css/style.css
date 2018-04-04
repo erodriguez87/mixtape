@@ -160,10 +160,15 @@ body{
 .mixtapeLabel2 {
   position: absolute; 
   z-index: 2; 
-  top: 5%; 
+  top: 7%; 
   left: 30%; 
   text-align:center; 
   font-family: 'Permanent Marker', cursive;
+}
+
+.userInfo {
+  /* padding-top: 200px; */
+  color: black;
 }
 
 .card-content {
