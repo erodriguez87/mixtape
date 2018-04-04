@@ -215,20 +215,15 @@
 
 
         var tapeLabel = $('<div class ="mixtapeLabel2">')
-          // console.log(fbFinalMixtapeName);
-
+        console.log(fbFinalMixtapeName);
         tapeLabel.append('<h5>' + fbFinalMixtapeName + '</h5>'); 
           
         var tapeImage = $('<img class="finalMixtapeImage">'); 
           tapeImage.attr('src', fbFinalUserTapeSelection); 
           $('.mixtapeCover').prepend(tapeImage, tapeLabel); 
-          // tapeImage.prepend('<h2>' + fbFinalUserName + '</h2>');
           
-        // var userDiv;
-        // console.log(fbFinalUserName);
-        // userDiv.addClass("userInfo");
-        // userDiv.append('<h2>' + 'Mixtape By: ' + fbFinalUserName + '</h2>');
-
+        $(".finalUserInfo").append ('<h5>' + 'A Mixtape By: ' + '<br>' + fbFinalUserName + '</h5>');
+        // $(".finalUserInfo").append ('<h5>' + 'Description: ' + fbFinalTapeInfo + '</h5>')
 
 
         //for loop to loop through the object returned from firebase
