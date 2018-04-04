@@ -215,7 +215,7 @@
 
 
         var tapeLabel = $('<div class ="mixtapeLabel2">')
-          console.log(fbFinalMixtapeName);
+          // console.log(fbFinalMixtapeName);
 
         tapeLabel.append('<h5>' + fbFinalMixtapeName + '</h5>'); 
           
@@ -237,7 +237,7 @@
             // console.log(artist); 
           var album = fbFinalPlaylist[0].values[i].album; 
           var trackName = fbFinalPlaylist[0].values[i].trackName; 
-          console.log(trackName); 
+          // console.log(trackName); 
           var albumArt; 
           var track = fbFinalPlaylist[0].values[i].trackName; 
           var trackLength = fbFinalPlaylist[0].values[i].trackLength; 
@@ -255,7 +255,9 @@
                 }).then(function(response) {
                   // console.log(response.album.image[1]['#text']); 
                   albumArt = response.track.album.image[1]['#text']; 
-                  // console.log(albumArt)
+                  console.log(queryURL); 
+                  console.log(response); 
+                  console.log(albumArt)
 
                   var tRow = $('<tr>'); 
                   var imgDisplay = $('<img>');
