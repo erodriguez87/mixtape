@@ -66,17 +66,23 @@
       <form>
         <div class="input-field">
           <div class="row">
-            <div class="input-field col s12">
-              <input id="search" type="text" class="validate">
-              <label for="search">Search Music</label>
+            <div class="input-field searchInput col s6">
+              <input id="searchArtist" type="text" class="validate">
+              <label for="searchArtist">Search Artist</label>
             </div>
+            <div class="input-field searchInput col s6">
+                <input id="searchTrack" type="text" class="validate">
+                <label for="searchTrack">Search Track</label>
+              </div>
           </div>
-          <a class="searchBtn waves-effect waves-light btn">Search<i class="material-icons right">send</i></a>
         </div>
       </form>
-      <div class="searchDump"></div>
+      <a class="searchBtn waves-effect waves-light btn">Search<i class="material-icons right">send</i></a>
+      <a class="clear waves-effect waves-light btn" id ="clear">Clear</a>
+
     </div> <!-- END searchBox -->
-      
+    
+    <div class="box searchDump white"></div>
   <!--playlist-->
 
     <div class="box playlist white">

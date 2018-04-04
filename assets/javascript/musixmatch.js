@@ -1,14 +1,19 @@
 //MusixMatch API connection and Searching for Songs
   // ==================================================================
   // Connection to musixmatch service, returns based on user search from html. It also passes a value into the youtube API Search. The request we made calls a jsonp file. That required a special function to parse it correctly.
+  $("#clear").on("click", function() {
+    $('.searchInput :input').val('');
+  }); // ----- END click event
+
+  
   $('.searchBtn').on('click', function (event) {
     event.preventDefault();
     
     //set variables including the search pulled in from the input field
-    var trackName = $("#search").val();
-    var artist = "";
+    var trackName = $("#searchTrack").val();
+    var artist = $("#searchArtist").val();;
     var apiKey = '76cb84616ac5b0e74b21c7674cb2b865';
-    var queryURL = 'https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_track=' + trackName +'&s_artist_rating=desc'+ '&apikey=' + apiKey;
+    var queryURL = 'https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_track=' + trackName +'&q_artist=' + artist + '&s_artist_rating=desc'+ '&apikey=' + apiKey;
 
     // set up arrays to catch the 10 responses from the first ajax call
     var tracks = [];
@@ -78,31 +83,103 @@
     $(this).remove(); 
   }); 
 
-
-
-
-
-
 // ==================================================================
 
 // Second call to MusixMatch for album images on the playlist
   // ==================================================================
-  function findAlbum (){
+  function findAlbumArt (){
     var albumSelect='28247938';
     var apiKey = '76cb84616ac5b0e74b21c7674cb2b865';
-    var queryURL2 = 'https://api.musixmatch.com/ws/1.1/album.get?album_id='+albumSelect+'&apikey=' + apiKey;
-    $.ajax({
-      url: queryURL2,
-      method: 'GET',
-    }).then()
-      .catch(function(response){
-        console.log('in ajax 2');
-        console.log(response);
-        var imgDisplay = $("<img>");
-        imgDisplay.attr('src', res.message.body.track_list[i].track.album_coverart_100x100);
+    var queryURL2 = 'https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id='+albumSelect+'&apikey=' + apiKey;
+    // https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id=28247938
+    // https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id=28247938&apikey=76cb84616ac5b0e74b21c7674cb2b865
+    // https://api.musixmatch.com/ws/1.1/album.get?album_id=28247938&apikey=76cb84616ac5b0e74b21c7674cb2b865
+    
+    // $.ajax({
+    //   url: queryURL2,
+    //   method: 'GET'
+    // }).then(function(response) {
+    //   console.log('in ajax 2');
+    //   // console.log(response);
+    //   var imgDisplay = $("<img>");
+    //   albumArt= response.message.body.album.album_coverart_100x100;
+    //   imgDisplay.attr('src', albumArt);
+    //   console.log(imgDisplay);
+    // }); 
+
+  }; 
+
+
+  findAlbumArt(); 
+
   
-      })
-  }
   
    
+// ==================================================================
+
+// Call to MusixMatch for lyrics when user selects song from playlist
+$('.finalPlaylist').on('click', '.youtube', function() {   
+    var artist = $(this).attr('artist'); 
+    var track = $(this).attr('trackName'); 
+    console.log(artist, track); 
+    var apiKey = '76cb84616ac5b0e74b21c7674cb2b865';
+    var queryURL = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=' + track +'&q_artist=' + artist + '&s_artist_rating=desc'+ '&apikey=' + apiKey;    
+    
+    // https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_track=slowride&q_artist=foghat&s_artist_rating=desc&apikey=76cb84616ac5b0e74b21c7674cb2b865
+    // https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=slowride&q_artist=foghat&s_artist_rating=desc&apikey=76cb84616ac5b0e74b21c7674cb2b865
+
+    function fetchLyrics(response) {
+      console.log(queryURL); 
+      console.log(response.message.body.lyrics.lyrics_body); 
+
+    }
+
+
+
+    $.ajax({
+      url: queryURL,
+      method: 'GET',
+      dataType: 'jsonp',
+      jsonpCallback: 'fetchLyrics'
+    }).then(fetchLyrics); 
+
+
+    //   console.log(response.body.lyrics.lyrics_body); 
+    // });
+
+
+
+    // second call to get lyrics
+
+
+    //display lyrics in DIV
+
+
+
+  }); 
+
+  var albumSelect='28247938';
+  var apiKey = '76cb84616ac5b0e74b21c7674cb2b865';
+  var queryURL2 = 'https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id='+albumSelect+'&apikey=' + apiKey;
+  // https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id=28247938
+  // https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id=28247938&apikey=76cb84616ac5b0e74b21c7674cb2b865
+  // https://api.musixmatch.com/ws/1.1/album.get?album_id=28247938&apikey=76cb84616ac5b0e74b21c7674cb2b865
+
+  // $.ajax({
+  //   url: queryURL2,
+  //   method: 'GET'
+  // }).then(function(response) {
+  //   console.log('in ajax 2');
+  //   // console.log(response);
+  //   var imgDisplay = $("<img>");
+  //   // albumArt= response.message.body.album.album_coverart_100x100;
+  //   imgDisplay.attr('src', albumArt);
+  //   console.log(imgDisplay);
+  // }); 
+
+  
+
+
+
+
 // ==================================================================
