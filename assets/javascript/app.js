@@ -108,8 +108,7 @@
 
 // // Modal =============================================================
     $(document).ready(function(){
-      $('.modal-trigger').modal();
-      $('.modal').modal();
+      $('.modal-trigger').leanModal();
     });
 // ==================================================================
   
@@ -254,12 +253,12 @@
           playBtnLink.empty(); // clears the attached music link before
   
           ytDisp.attr('src','assets/images/youtube.png');
-          ytDisp.attr('href','#modal2');
+          // ytDisp.attr('href','#modal2');
           ytDisp.attr('height', '55px');
           ytDisp.attr('width', '55px');
           ytDisp.attr('artist', artist);
           ytDisp.attr('track', track);
-          ytDisp.addClass('waves-effect waves-light modal-trigger youtube');
+          ytDisp.addClass('waves-effect waves-light');
 
           imgDisplay.attr('height', '55px'); //album art variable height
           imgDisplay.attr('width', '55px'); //album art variable width
@@ -271,7 +270,6 @@
           playBtn.text('send');
 
           playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light green playBtn');
-          // playBtnLink.attr('href','https://www.youtube.com/embed/DMilXF7ENps?rel=0');
           playBtnLink.append(playBtn);
           playBtnLink.attr('artist',artist);
           playBtnLink.attr('track',track);
@@ -281,7 +279,6 @@
           modalBtn.attr('artist', artist);
           modalBtn.attr('track', track);
           modalBtn.attr('href','#modal2');
-          modalBtn.attr('data-target','modal2')
           modalBtn.append(ytDisp);
        
             // append all the table data elemnts to the rows and then row to the table
@@ -292,7 +289,7 @@
             var trackTd = $('<td class="trackName">').text(track);
             var trackLengthTd = $('<td class="tlength">').text(trackLength);
             var playTd = $('<td class="playMusic">').append(playBtnLink);
-            var ytTd = $('<td class="youtube modal-trigger">').append(modalBtn);
+            var ytTd = $('<td class="youtubeTd">').append(modalBtn);
   
             tRow.addClass('finalTrackSelect hoverable')
             tRow.append(albumCovTd,artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
@@ -327,11 +324,10 @@
 // On click to open modal and search youtube API
 // ==================================================================
   $('.finalPlaylist').on('click', '.youtube', function() {
-    console.log(this); 
-    $('#modal2').modal('open');
     var artist = $(this).attr('artist');
     var track = $(this).attr('track');
     
+    console.log('artist and track click ' + artist + track);
       // Youtube API ======================================================
       // ==================================================================
       // Need to get the trackname and artist passed from music match. This section searches the youtube API for a mix of the track and artist and returns the top 10 results.
@@ -342,8 +338,9 @@
         var artist = artistPass;
         var searchString = trackName + artist;
         var ytKey = 'AIzaSyC2Ztkch3B2cHJIwLRpZpwzCw4IM6UqwlU';
-        var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=10&format=5&key='+ytKey
-        
+        var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=1&key='+ytKey
+        console.log('search string ' + trackName + artist);
+        console.log('youtube url ' + queryURL);
         // ajax call that returns the title of the first video, a high quality thumbnail, the url for the thumbnail and the video id. this video id is used for an embedded video player for the top result video
         $.ajax({
           url: queryURL,
@@ -352,12 +349,13 @@
           objectsRet = response.items;  
           baseURL = '<iframe id="ytplayer" type="text/html" width="640" height="360" src="' 
           vidUrl = 'https://www.youtube.com/embed/' + objectsRet[0].id.videoId
-          iframeUrl = baseURL + vidUrl + 'frameborder="0">'+'</iframe>';
-          console.log('iframe' + iframeUrl);
+          iframeUrl = baseURL + vidUrl + '"frameborder="0">'+'</iframe>';
+          console.log('video url ' + vidUrl);
           
           var ytModal = $('.modal-youtube');
-          console.log(ytModal,iframeUrl);
-          ytModal.html(iframeUrl);
+          ytModal.empty();
+          console.log('iframe ' + iframeUrl);
+          ytModal.append(iframeUrl);
           
     
         }); 
