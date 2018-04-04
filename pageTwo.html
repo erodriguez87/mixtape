@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -20,46 +21,51 @@
       <div class="box header white">
         <img src = "assets/images/logo.png"></a>
       </div>
-      <div class="box mixtapeCover white"></div>
+      <div class="box mixtapeCover white" id="mixtape-container"></div>
 
       <div class="box finalPlaylist white">
 
 
       </div><!--end finalPlaylist-->
 
-      <div class="box shareTunes white">
-      <!-- share button/ modal -->
+  <div class="box shareTunes white">
+    <!-- share button/ modal -->
         <div class="row section">
           <div class="col">
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Share</a>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Share</a>
           </div>
-        </div>
+        </div> <!--end modal trigger-->
 
-
-      <!-- modal structure -->
-        <div id="modal1" class="modal">
-          <div class="modal-content">
-            <h4>Share Your Tape!</h4>
-              <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Facebook</a>
-              <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Twitter</a>
-              <a class="waves-effect waves-light btn-large"><i class="material-icons left">link</i>Link</a>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-          </div>
-        </div>
-      <!-- end modal html -->
-
-      <!-- Youtube Modal -->
-      <div id="modal2" class="modal">
+    <!-- modal structure/ Modal1 -->
+      <div id="modal1" class="modal">
         <div class="modal-content">
-          <div><iframe width="640" height="360" src="https://www.youtube.com/embed/sZfZ8uWaOFI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+          <h4>Share Your Tape!</h4>
+            <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Facebook</a>
+            <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Twitter</a>
+            <a class="waves-effect waves-light btn-large"><i class="material-icons left">link</i>Link</a>
         </div>
         <div class="modal-footer">
           <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
+    </div>
+    <!-- end modal html -->
+
+    <!-- Youtube / Modal2-->
+      <div id="modal2" class="modal">
+          <div class="modal-content">
+            <div class="modal-youtube"></div>
+              <!-- <div><iframe width="640" height="360" src="https://www.youtube.com/embed/sZfZ8uWaOFI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div> -->
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+          </div>
+    </div><!--end Modal2 -->
+    </div><!--end shareTunes-->
+
+      <div class = "box white center-align mixButtonContainer">
+          <a class="waves-effect waves-light btn-large mixtapeInfoSave pink darken-3" href = "index.html">YOU'RE REALLY GOOD AT THIS! MAKE ANOTHER MIXTAPE!</a>
       </div>
-      </div><!--end shareTunes-->
+
       <div class="box lyrics white">lyrics</div>
       <div class="box footer pink darken-3 center-align"><h5>FOOTER</h5></div>
     </div>

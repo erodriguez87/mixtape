@@ -137,9 +137,9 @@
 // ==================================================================
 
 // Modal =============================================================
-  // $(document).ready(function(){
-  //   $('.modal-trigger').leanModal();
-  // });
+    $(document).ready(function(){
+      $('.modal-trigger').leanModal();
+    });
 // ==================================================================
   
 // =====  Mixtape Info ===============================================
@@ -222,7 +222,7 @@
 // Final Playlist
   function genFinPlaylist () {
     console.log('in fin playlist');
-      // $('.modal-trigger').leanModal();
+      $('.modal-trigger').leanModal();
       $('.finalPlaylist').empty(); //clears whatever was in the playlist before showing the new one
 
       //  set up variables for the table
@@ -239,15 +239,25 @@
         var fbFinalMixtapeName = snapshot.child('mixtapeInfo/mixtapeName').val();
         var fbFinalUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
         var fbFinalPlaylist = snapshot.child('mixtapeInfo/playlist').val();
+        var fbFinalUserName = snapshot.child('mixtapeInfo/userName').val();
         // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
         // console.log('fbFinalPlaylist', fbFinalPlaylist[0]);
 
-        var tapeLabel = $('<div class ="mixtapeLabel">')
-          // console.log(fbFinalMixtapeName);
-          tapeLabel.append('<h5>' + fbFinalMixtapeName + '</h5>'); 
+
+        var tapeLabel = $('<div class ="mixtapeLabel2">')
+          console.log(fbFinalMixtapeName);
+
+        tapeLabel.append('<h5>' + fbFinalMixtapeName + '</h5>'); 
+          
         var tapeImage = $('<img class="finalMixtapeImage">'); 
           tapeImage.attr('src', fbFinalUserTapeSelection); 
           $('.mixtapeCover').append(tapeImage, tapeLabel); 
+          // tapeImage.prepend('<h2>' + fbFinalUserName + '</h2>');
+          
+        // var userDiv;
+        // console.log(fbFinalUserName);
+        // userDiv.addClass("userInfo");
+        // userDiv.append('<h2>' + 'Mixtape By: ' + fbFinalUserName + '</h2>');
 
 
 
