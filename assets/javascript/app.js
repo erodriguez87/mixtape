@@ -263,15 +263,18 @@ $(document).ready(function() {
           imgDisplay.attr('height', '55px'); //album art variable height
           imgDisplay.attr('width', '55px'); //album art variable width
 
-          playBtn.addClass('material-icons');
+          playBtn.addClass('material-icons playBtn');
           playBtn.attr('artist',artist);
           playBtn.attr('track',track);
           playBtn.attr('album',album);
           playBtn.text('send');
 
-          playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light green');
+          playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light green playBtn');
           // playBtnLink.attr('href','https://www.youtube.com/embed/DMilXF7ENps?rel=0');
           playBtnLink.append(playBtn);
+          playBtnLink.attr('artist',artist);
+          playBtnLink.attr('track',track);
+          playBtnLink.attr('album',album);
 
           modalBtn.addClass('waves-effect waves-light modal-trigger youtube');
           modalBtn.attr('artist', artist);
