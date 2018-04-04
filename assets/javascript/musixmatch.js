@@ -118,7 +118,7 @@
 // ==================================================================
 
 // Call to MusixMatch for lyrics when user selects song from playlist
-$('.finalPlaylist').on('click', '.youtube', function() {   
+$('.finalPlaylist').on('click', '.playBtn', function() {   
     var artist = $(this).attr('artist'); 
     var track = $(this).attr('trackName'); 
     console.log(artist, track); 
