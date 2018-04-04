@@ -1,11 +1,11 @@
 // Mixtape Logic
 // Wait for the page to finish loading and establish global variables
-var data = [];
-var jsonPlaylist = []; //declare object
-var youObj =  {};
-var objectsRet = {};
-var iframeUrl;
-$(document).ready(function() {
+  var data = [];
+  var jsonPlaylist = []; //declare object
+  var youObj =  {};
+  var objectsRet = {};
+  var iframeUrl;
+  $(document).ready(function() {
 // ==================================================================
 
   
@@ -106,9 +106,9 @@ $(document).ready(function() {
   }); //END 
 // ==================================================================
 
-// Modal =============================================================
+// // Modal =============================================================
     $(document).ready(function(){
-      $('.modal-trigger').modal();
+      $('.modal-trigger').leanModal();
     });
 // ==================================================================
   
@@ -314,20 +314,11 @@ $(document).ready(function() {
                     tRow.append(albumCovTd,artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
                     tbl.append(tRow);
 
-
-
-
-
-
                 }); 
           // ==============================================
 
         } // END for loop
-
-
-
       }); 
-
 
       // ====================================================
 
@@ -352,10 +343,10 @@ $(document).ready(function() {
 // On click to open modal and search youtube API
 // ==================================================================
   $('.finalPlaylist').on('click', '.youtube', function() {
-    console.log(this); 
     var artist = $(this).attr('artist');
     var track = $(this).attr('track');
     
+    console.log('artist and track click ' + artist + track);
       // Youtube API ======================================================
       // ==================================================================
       // Need to get the trackname and artist passed from music match. This section searches the youtube API for a mix of the track and artist and returns the top 10 results.
@@ -366,8 +357,9 @@ $(document).ready(function() {
         var artist = artistPass;
         var searchString = trackName + artist;
         var ytKey = 'AIzaSyC2Ztkch3B2cHJIwLRpZpwzCw4IM6UqwlU';
-        var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=10&key='+ytKey
-        
+        var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=1&key='+ytKey
+        console.log('search string ' + trackName + artist);
+        console.log('youtube url ' + queryURL);
         // ajax call that returns the title of the first video, a high quality thumbnail, the url for the thumbnail and the video id. this video id is used for an embedded video player for the top result video
         $.ajax({
           url: queryURL,
@@ -376,12 +368,14 @@ $(document).ready(function() {
           objectsRet = response.items;  
           baseURL = '<iframe id="ytplayer" type="text/html" width="640" height="360" src="' 
           vidUrl = 'https://www.youtube.com/embed/' + objectsRet[0].id.videoId
-          iframeUrl = baseURL + vidUrl + "frameborder='0'></iframe>";
-          console.log('iframe' + iframeUrl);
-    
+          iframeUrl = baseURL + vidUrl + '"frameborder="0">'+'</iframe>';
+          console.log('video url ' + vidUrl);
+          
           var ytModal = $('.modal-youtube');
-          console.log(ytModal,iframeUrl);
+          ytModal.empty();
+          console.log('iframe ' + iframeUrl);
           ytModal.append(iframeUrl);
+          
     
         }); 
       } 

@@ -11,8 +11,9 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    
     <title>MXTP</title> 
     
   </head>
@@ -27,23 +28,34 @@
         <!-- share button/ modal -->
         <div class="row section">
           <div class="col">
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Share</a>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Share</a>
           </div>
         </div> <!--end modal trigger-->
 
-        <!-- modal structure/ Modal1 -->
-          <div id="modal1" class="modal">
-            <div class="modal-content">
-              <h4>Share Your Tape!</h4>
-                <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Facebook</a>
-                <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Twitter</a>
-                <a class="waves-effect waves-light btn-large"><i class="material-icons left">link</i>Link</a>
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-          </div>
-        <!-- end modal html -->
+    <!-- modal structure/ Modal1 -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>Share Your Tape!</h4>
+            <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Facebook</a>
+            <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Twitter</a>
+            <a class="waves-effect waves-light btn-large"><i class="material-icons left">link</i>Link</a>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+     </div>
+
+      <!-- modal structure/ Modal2 -->
+      <div id="modal2" class="modal">
+        <div class="modal-content">
+          <div class="modal-youtube"></div>
+          
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+      </div>
+    </div><!--end shareTunes -->
 
         <!-- Youtube / Modal2-->
           <div id="modal2" class="modal">
@@ -76,8 +88,8 @@
 
     
   <!-- Code to the JavaScript File -->
+    
     <script src="assets/javascript/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
     <script src="assets/javascript/musixmatch.js"></script>
   
   </body></html>
