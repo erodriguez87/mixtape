@@ -3,6 +3,7 @@
   var data = [];
   var jsonPlaylist = []; //declare object
   $(document).ready(function() {
+
 // ==================================================================
 
   
@@ -28,7 +29,7 @@
       var fbUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
       // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
 
-      console.log(fbPlaylist[0].values[0].trackName);
+      // console.log(fbPlaylist[0].values[0].trackName);
       var song1 = fbPlaylist[0].values[0].trackName + ' by ' + fbPlaylist[0].values[0].artist; 
       var song2 = fbPlaylist[0].values[1].trackName + ' by ' + fbPlaylist[0].values[1].artist; 
       var song3 = fbPlaylist[0].values[2].trackName + ' by ' + fbPlaylist[0].values[2].artist; 
@@ -41,7 +42,7 @@
       var tempCardDiv = $('<div class="card">'); 
       var tempImageDiv = $('<div class="card-image">'); 
         var tapeLabel = $('<div class ="mixtapeLabel">')
-          console.log(fbMixtapeName);
+          // console.log(fbMixtapeName);
           tapeLabel.append('<h5>' + fbMixtapeName + '</h5>'); 
         var tapeImage = $('<img class="recentTapes">'); 
           tapeImage.attr('src', fbUserTapeSelection); 
@@ -113,7 +114,7 @@
   var tape5 = $('<img class="tapeImages" id="tape5" src="assets/images/tape5.png" style="width:100%">'); 
   var tape6 = $('<img class="tapeImages" id="tape6" src="assets/images/tape6.jpg" style="width:100%">'); 
   tapeImageArray.push(tape1, tape2, tape3, tape4, tape5, tape6); 
-  console.log(tapeImageArray[0]); 
+  // console.log(tapeImageArray[0]); 
   var tape = 0
   $('.images').html(tapeImageArray[tape]); 
 
@@ -144,7 +145,8 @@
 // =====  Mixtape Info ===============================================
   // Mixtape info
 
-  $('.mixtapeInfoSave').on('click', function() {
+  $('.mixtapeInfoSave').on('submit', function() {
+    event.preventDefault();
     var userTapeSelection = tapeImageArray[tape].attr('src'); 
     var mixtapeName = $('#mixtapeName').val(); 
     var userName = $('#userName').val(); 
@@ -164,7 +166,7 @@
 
     // count how many rows in the table 
     var trackCount = $('.playlistWIP').find('tr').length;
-    console.log(trackCount); 
+    // console.log(trackCount); 
 
     var userPlaylist = {}; 
     var playlistTable = $('#playlistComplete'); 
@@ -199,9 +201,9 @@
       // genFinPlaylist(jsonPlaylist); 
     }
 
-    console.log(data); 
-    console.log(jsonPlaylist); 
-    console.log(mixtapeInfo);
+    // console.log(data); 
+    // console.log(jsonPlaylist); 
+    // console.log(mixtapeInfo);
 
     GetCellValues();
     // genFinPlaylist(jsonPlaylist); 
@@ -227,7 +229,7 @@
       var tBody = $('.finalPlaylist');
       var tbl   = $('<table>');
       var tblH  = $('<tr><th>Album Cover</th><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Play</th><th>Youtube</th>')
-            
+      
       // set up table headers
       tbl.append(tblH);
 
@@ -239,11 +241,13 @@
         var fbFinalPlaylist = snapshot.child('mixtapeInfo/playlist').val();
         var fbFinalUserName = snapshot.child('mixtapeInfo/userName').val();
         // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
-        console.log('fbFinalPlaylist', fbFinalPlaylist[0]);
+        // console.log('fbFinalPlaylist', fbFinalPlaylist[0]);
+
 
         var tapeLabel = $('<div class ="mixtapeLabel2">')
           console.log(fbFinalMixtapeName);
-          tapeLabel.append('<h5>' + fbFinalMixtapeName + '</h5>'); 
+
+        tapeLabel.append('<h5>' + fbFinalMixtapeName + '</h5>'); 
           
         var tapeImage = $('<img class="finalMixtapeImage">'); 
           tapeImage.attr('src', fbFinalUserTapeSelection); 
@@ -264,7 +268,7 @@
           var album = fbFinalPlaylist[0].values[i].album; 
           var track = fbFinalPlaylist[0].values[i].trackName; 
           var trackLength = fbFinalPlaylist[0].values[i].trackLength; 
-            console.log(artist, album, track, trackLength); 
+            // console.log(artist, album, track, trackLength); 
 
 
           var tRow = $('<tr>'); 
@@ -312,7 +316,7 @@
             var playTd = $('<td class="playMusic">').append(playBtnLink);
             var ytTd = $('<td class="youtube modal-trigger">').append(modalBtn);
   
-            tRow.addClass('trackSelect hoverable')
+            tRow.addClass('finalTrackSelect hoverable')
             tRow.append(albumCovTd,artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
             tbl.append(tRow);
         } // END for loop
@@ -337,6 +341,9 @@
   };
   genFinPlaylist(jsonPlaylist);
 
+
+
+  
 // ==================================================================
 
   
