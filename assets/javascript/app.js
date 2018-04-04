@@ -1,11 +1,11 @@
 // Mixtape Logic
 // Wait for the page to finish loading and establish global variables
-var data = [];
-var jsonPlaylist = []; //declare object
-var youObj =  {};
-var objectsRet = {};
-var iframeUrl;
-$(document).ready(function() {
+  var data = [];
+  var jsonPlaylist = []; //declare object
+  var youObj =  {};
+  var objectsRet = {};
+  var iframeUrl;
+  $(document).ready(function() {
 // ==================================================================
 
   
@@ -106,9 +106,10 @@ $(document).ready(function() {
   }); //END 
 // ==================================================================
 
-// Modal =============================================================
+// // Modal =============================================================
     $(document).ready(function(){
       $('.modal-trigger').modal();
+      $('.modal').modal();
     });
 // ==================================================================
   
@@ -280,6 +281,7 @@ $(document).ready(function() {
           modalBtn.attr('artist', artist);
           modalBtn.attr('track', track);
           modalBtn.attr('href','#modal2');
+          modalBtn.attr('data-target','modal2')
           modalBtn.append(ytDisp);
        
             // append all the table data elemnts to the rows and then row to the table
@@ -326,6 +328,7 @@ $(document).ready(function() {
 // ==================================================================
   $('.finalPlaylist').on('click', '.youtube', function() {
     console.log(this); 
+    $('#modal2').modal('open');
     var artist = $(this).attr('artist');
     var track = $(this).attr('track');
     
@@ -339,7 +342,7 @@ $(document).ready(function() {
         var artist = artistPass;
         var searchString = trackName + artist;
         var ytKey = 'AIzaSyC2Ztkch3B2cHJIwLRpZpwzCw4IM6UqwlU';
-        var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=10&key='+ytKey
+        var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=10&format=5&key='+ytKey
         
         // ajax call that returns the title of the first video, a high quality thumbnail, the url for the thumbnail and the video id. this video id is used for an embedded video player for the top result video
         $.ajax({
@@ -349,12 +352,13 @@ $(document).ready(function() {
           objectsRet = response.items;  
           baseURL = '<iframe id="ytplayer" type="text/html" width="640" height="360" src="' 
           vidUrl = 'https://www.youtube.com/embed/' + objectsRet[0].id.videoId
-          iframeUrl = baseURL + vidUrl + "frameborder='0'></iframe>";
+          iframeUrl = baseURL + vidUrl + 'frameborder="0">'+'</iframe>';
           console.log('iframe' + iframeUrl);
-    
+          
           var ytModal = $('.modal-youtube');
           console.log(ytModal,iframeUrl);
-          ytModal.append(iframeUrl);
+          ytModal.html(iframeUrl);
+          
     
         }); 
       } 
