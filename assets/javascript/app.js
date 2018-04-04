@@ -1,9 +1,11 @@
 // Mixtape Logic
 // Wait for the page to finish loading and establish global variables
-  var data = [];
-  var jsonPlaylist = []; //declare object
-  $(document).ready(function() {
-
+var data = [];
+var jsonPlaylist = []; //declare object
+var youObj =  {};
+var objectsRet = {};
+var iframeUrl;
+$(document).ready(function() {
 // ==================================================================
 
   
@@ -70,38 +72,6 @@
   
 // ================================================================
 
-// Youtube API ======================================================
-  // ==================================================================
-  // Need to get the trackname and artist passed from music match. This section searches the youtube API for a mix of the track and artist and returns the top 10 results.
-
-  function searchYoutube(trackPass,artistPass) {
-    // set variables for search and establish youtube key
-    var trackName = trackPass; 
-    var artist = artistPass;
-
-    var searchString = trackName + " " + artist;
-    var ytKey = 'AIzaSyC2Ztkch3B2cHJIwLRpZpwzCw4IM6UqwlU';
-    var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=10&key='+ytKey
-
-    // ajax call that returns the title of the first video, a high quality thumbnail, the url for the thumbnail and the video id. this video id is used for an embedded video player for the top result video
-    $.ajax({
-      url: queryURL,
-      method: 'GET'
-    }).then(function(response) {
-      var objectsRet = response.items;
-      console.log(objectsRet);
-      
-      // object that holds all the video elements returned from the api call
-      var youObj = {
-        title : objectsRet[0].snippet.title, //video title
-        thumbHigh : objectsRet[0].snippet.thumbnails.high.url, //video thumbnail
-        embedId: objectsRet[0].id.videoId, //id of video for search iframe
-        iframeUrl : "<iframe id='ytplayer' type='text/html' width='640' height='360' src='https://www.youtube.com/embed/'" + objectsRet[0].id.videoId + "frameborder='0'></iframe>",
-        vidUrl: 'https://www.youtube.com/embed/' + objectsRet[0].id.videoId // iframe link
-        // use ?autoplay=1& for autoplay
-      };
-    });
-  }
 // ==================================================================
 
 // =====Tape Selector ===============================================
@@ -137,16 +107,16 @@
 // ==================================================================
 
 // Modal =============================================================
-    // $(document).ready(function(){
-    //   // $('.modal-trigger').leanModal();
-    // });
+    $(document).ready(function(){
+      $('.modal-trigger').modal();
+    });
 // ==================================================================
   
 // =====  Mixtape Info ===============================================
   // Mixtape info
 
-  $('.mixtapeInfoSave').on('submit', function() {
-    event.preventDefault();
+  $('.mixtapeInfoSave').on('click', function() {
+    // event.preventDefault();
     var userTapeSelection = tapeImageArray[tape].attr('src'); 
     var mixtapeName = $('#mixtapeName').val(); 
     var userName = $('#userName').val(); 
@@ -286,26 +256,29 @@
           ytDisp.attr('href','#modal2');
           ytDisp.attr('height', '55px');
           ytDisp.attr('width', '55px');
-          ytDisp.addClass('waves-effect waves-light modal-trigger');
-  
+          ytDisp.attr('artist', artist);
+          ytDisp.attr('track', track);
+          ytDisp.addClass('waves-effect waves-light modal-trigger youtube');
+
           imgDisplay.attr('height', '55px'); //album art variable height
           imgDisplay.attr('width', '55px'); //album art variable width
-  
+
           playBtn.addClass('material-icons');
+          playBtn.attr('artist',artist);
+          playBtn.attr('track',track);
+          playBtn.attr('album',album);
           playBtn.text('send');
-  
+
           playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light green');
-          playBtnLink.attr('href','https://www.youtube.com/embed/DMilXF7ENps?rel=0');
+          // playBtnLink.attr('href','https://www.youtube.com/embed/DMilXF7ENps?rel=0');
           playBtnLink.append(playBtn);
-  
-          modalBtn.addClass('waves-effect waves-light modal-trigger');
+
+          modalBtn.addClass('waves-effect waves-light modal-trigger youtube');
+          modalBtn.attr('artist', artist);
+          modalBtn.attr('track', track);
           modalBtn.attr('href','#modal2');
           modalBtn.append(ytDisp);
-  
-          
-  
-  
-  
+       
             // append all the table data elemnts to the rows and then row to the table
             // var artistTd = $('<td class="artist">').text(jsonPlaylist.playlist.artist);
             var albumCovTd = $('<td class="AlbumArt">').append(imgDisplay);
@@ -346,6 +319,47 @@
   
 // ==================================================================
 
+// On click to open modal and search youtube API
+// ==================================================================
+  $('.finalPlaylist').on('click', '.youtube', function() {
+    console.log(this); 
+    var artist = $(this).attr('artist');
+    var track = $(this).attr('track');
+    
+      // Youtube API ======================================================
+      // ==================================================================
+      // Need to get the trackname and artist passed from music match. This section searches the youtube API for a mix of the track and artist and returns the top 10 results.
+    
+      function searchYoutube(trackPass,artistPass) {
+        // set variables for search and establish youtube key
+        var trackName = trackPass; 
+        var artist = artistPass;
+        var searchString = trackName + artist;
+        var ytKey = 'AIzaSyC2Ztkch3B2cHJIwLRpZpwzCw4IM6UqwlU';
+        var queryURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchString+'&type=video&maxResults=10&key='+ytKey
+        
+        // ajax call that returns the title of the first video, a high quality thumbnail, the url for the thumbnail and the video id. this video id is used for an embedded video player for the top result video
+        $.ajax({
+          url: queryURL,
+          method: 'GET'
+        }).then(function(response) {
+          objectsRet = response.items;  
+          baseURL = '<iframe id="ytplayer" type="text/html" width="640" height="360" src="' 
+          vidUrl = 'https://www.youtube.com/embed/' + objectsRet[0].id.videoId
+          iframeUrl = baseURL + vidUrl + "frameborder='0'></iframe>";
+          console.log('iframe' + iframeUrl);
+    
+          var ytModal = $('.modal-youtube');
+          console.log(ytModal,iframeUrl);
+          ytModal.append(iframeUrl);
+    
+        }); 
+      } 
+      // ==================================================================
+    searchYoutube(track,artist);
+   // ==================================================================
+  
+  }); 
   
   
 }); // End Document.ready
