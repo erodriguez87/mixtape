@@ -85,101 +85,73 @@
 
 // ==================================================================
 
-// Second call to MusixMatch for album images on the playlist
-  // ==================================================================
-  function findAlbumArt (){
-    var albumSelect='28247938';
-    var apiKey = '76cb84616ac5b0e74b21c7674cb2b865';
-    var queryURL2 = 'https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id='+albumSelect+'&apikey=' + apiKey;
-    // https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id=28247938
-    // https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id=28247938&apikey=76cb84616ac5b0e74b21c7674cb2b865
-    // https://api.musixmatch.com/ws/1.1/album.get?album_id=28247938&apikey=76cb84616ac5b0e74b21c7674cb2b865
-    
-    // $.ajax({
-    //   url: queryURL2,
-    //   method: 'GET'
-    // }).then(function(response) {
-    //   console.log('in ajax 2');
-    //   // console.log(response);
-    //   var imgDisplay = $("<img>");
-    //   albumArt= response.message.body.album.album_coverart_100x100;
-    //   imgDisplay.attr('src', albumArt);
-    //   console.log(imgDisplay);
-    // }); 
-
-  }; 
-
-
-  findAlbumArt(); 
-
-  
-  
-   
-// ==================================================================
 
 // Call to MusixMatch for lyrics when user selects song from playlist
-$('.finalPlaylist').on('click', '.playBtn', function() {   
-    var artist = $(this).attr('artist'); 
-    var track = $(this).attr('trackName'); 
-    console.log(artist, track); 
-    var apiKey = '76cb84616ac5b0e74b21c7674cb2b865';
-    var queryURL = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=' + track +'&q_artist=' + artist + '&s_artist_rating=desc'+ '&apikey=' + apiKey;    
+  // $('.finalPlaylist').on('click', '.playBtn', function() {   
+  //   var artist = $(this).attr('artist'); 
+  //   var track = $(this).attr('track'); 
+  //   console.log(artist, track); 
+  //   var apiKey = '76cb84616ac5b0e74b21c7674cb2b865';
+  //   var queryURL = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=' + track +'&q_artist=' + artist + '&s_artist_rating=desc'+ '&apikey=' + apiKey;    
     
-    // https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_track=slowride&q_artist=foghat&s_artist_rating=desc&apikey=76cb84616ac5b0e74b21c7674cb2b865
-    // https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=slowride&q_artist=foghat&s_artist_rating=desc&apikey=76cb84616ac5b0e74b21c7674cb2b865
+  //   // https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_track=slowride&q_artist=foghat&s_artist_rating=desc&apikey=76cb84616ac5b0e74b21c7674cb2b865
+  //   // https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=slowride&q_artist=foghat&s_artist_rating=desc&apikey=76cb84616ac5b0e74b21c7674cb2b865
 
-    function fetchLyrics(response) {
-      console.log(queryURL); 
-      console.log(response.message.body.lyrics.lyrics_body); 
+  //   function fetchLyrics(response) {
+  //     console.log(queryURL); 
+  //     var trackLyrics = response.message.body.lyrics.lyrics_body; 
+  //     console.log(trackLyrics); 
+  //     lyricsP = $('<p>').append(trackLyrics); 
+  //     lyricsCopyright = '<br>' + response.message.body.lyrics.lyrics_copyright; 
+  //     // $('<img src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuXW">'); 
+  //     $('.lyrics').html(lyricsP);
+  //     $('.lyrics').append(lyricsCopyright); 
+  //   }
 
-    }
+  //   $.ajax({
+  //     url: queryURL,
+  //     method: 'GET',
+  //     dataType: 'jsonp',
+  //     jsonpCallback: 'fetchLyrics'
+  //   }).then(fetchLyrics); 
 
-
-
-    $.ajax({
-      url: queryURL,
-      method: 'GET',
-      dataType: 'jsonp',
-      jsonpCallback: 'fetchLyrics'
-    }).then(fetchLyrics); 
-
-
-    //   console.log(response.body.lyrics.lyrics_body); 
-    // });
-
-
-
-    // second call to get lyrics
-
-
-    //display lyrics in DIV
-
-
-
-  }); 
-
-  var albumSelect='28247938';
-  var apiKey = '76cb84616ac5b0e74b21c7674cb2b865';
-  var queryURL2 = 'https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id='+albumSelect+'&apikey=' + apiKey;
-  // https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id=28247938
-  // https://api.musixmatch.com/ws/1.1/album.get?format=jsonp&callback=callback&album_id=28247938&apikey=76cb84616ac5b0e74b21c7674cb2b865
-  // https://api.musixmatch.com/ws/1.1/album.get?album_id=28247938&apikey=76cb84616ac5b0e74b21c7674cb2b865
-
-  // $.ajax({
-  //   url: queryURL2,
-  //   method: 'GET'
-  // }).then(function(response) {
-  //   console.log('in ajax 2');
-  //   // console.log(response);
-  //   var imgDisplay = $("<img>");
-  //   // albumArt= response.message.body.album.album_coverart_100x100;
-  //   imgDisplay.attr('src', albumArt);
-  //   console.log(imgDisplay);
   // }); 
-
-  
-
-
 
 
 // ==================================================================
+
+// Call to LastFM for Album Info when user selects song from playlist
+$('.finalPlaylist').on('click', '.playBtn', function() {  
+  var artist = $(this).attr('artist'); 
+  var track = $(this).attr('track'); 
+  var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
+  var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=' + apiKey + '&artist=' + artist + '&track=' + track + '&format=json'; 
+  $.ajax({
+    url: queryURL,
+    method: 'GET',
+  }).then(function(response) {
+    // console.log(response.album.image[1]['#text']); 
+    trackSummary = response.track.wiki.content; 
+    console.log(trackSummary)
+    trackSummaryP = $('<p>').html(trackSummary); 
+    $('.summary').html(trackSummary); 
+
+
+  });
+
+
+}); 
+  
+  
+  
+
+    // lyricsP = $('<p>').append(trackLyrics); 
+    // lyricsCopyright = '<br>' + response.message.body.lyrics.lyrics_copyright; 
+    // // $('<img src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuXW">'); 
+    // $('.lyrics').html(lyricsP);
+    // $('.lyrics').append(lyricsCopyright); 
+  
+
+
+// ==================================================================
+
