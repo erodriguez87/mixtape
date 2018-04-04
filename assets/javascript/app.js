@@ -115,8 +115,8 @@ $(document).ready(function() {
 // =====  Mixtape Info ===============================================
   // Mixtape info
 
-  $('.mixtapeInfoSave').on('submit', function() {
-    event.preventDefault();
+  $('.mixtapeInfoSave').on('click', function() {
+    // event.preventDefault();
     var userTapeSelection = tapeImageArray[tape].attr('src'); 
     var mixtapeName = $('#mixtapeName').val(); 
     var userName = $('#userName').val(); 
