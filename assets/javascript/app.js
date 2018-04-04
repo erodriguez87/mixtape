@@ -221,7 +221,7 @@
           
         var tapeImage = $('<img class="finalMixtapeImage">'); 
           tapeImage.attr('src', fbFinalUserTapeSelection); 
-          $('.mixtapeCover').append(tapeImage, tapeLabel); 
+          $('.mixtapeCover').prepend(tapeImage, tapeLabel); 
           // tapeImage.prepend('<h2>' + fbFinalUserName + '</h2>');
           
         // var userDiv;
@@ -236,70 +236,89 @@
           var artist = fbFinalPlaylist[0].values[i].artist; 
             // console.log(artist); 
           var album = fbFinalPlaylist[0].values[i].album; 
+          var trackName = fbFinalPlaylist[0].values[i].trackName; 
+          console.log(trackName); 
+          var albumArt; 
           var track = fbFinalPlaylist[0].values[i].trackName; 
           var trackLength = fbFinalPlaylist[0].values[i].trackLength; 
             // console.log(artist, album, track, trackLength); 
 
+          // ====LastFM API Call for Album Art=============
+            var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
+            var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=' + apiKey + '&artist=' + artist + '&track=' + trackName + '&format=json'; 
+            
+            // http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=7b595b1c67e159509af67e6e4e94cbb4&artist=cher&track=believe&format=json
+            
+            $.ajax({
+                  url: queryURL,
+                  method: 'GET',
+                }).then(function(response) {
+                  // console.log(response.album.image[1]['#text']); 
+                  albumArt = response.track.album.image[1]['#text']; 
+                  // console.log(albumArt)
 
-          var tRow = $('<tr>'); 
-          var imgDisplay = $('<img>');
-          var ytDisp = $('<img>');
-          var playBtnLink = $('<a>');
-          var playBtn = $('<i>');
-          var modalBtn = $('<a>');
-  
-          tRow.empty(); // clears the row after each loopthrough and each append
-          ytDisp.empty(); //clears the youtube icon display so it can be re-applied
-          playBtnLink.empty(); // clears the attached music link before
-  
-          ytDisp.attr('src','assets/images/youtube.png');
-          // ytDisp.attr('href','#modal2');
-          ytDisp.attr('height', '55px');
-          ytDisp.attr('width', '55px');
-          ytDisp.attr('artist', artist);
-          ytDisp.attr('track', track);
-          ytDisp.addClass('waves-effect waves-light');
+                  var tRow = $('<tr>'); 
+                  var imgDisplay = $('<img>');
+                  var ytDisp = $('<img>');
+                  var playBtnLink = $('<a>');
+                  var playBtn = $('<i>');
+                  var modalBtn = $('<a>');
+          
+                  tRow.empty(); // clears the row after each loopthrough and each append
+                  ytDisp.empty(); //clears the youtube icon display so it can be re-applied
+                  playBtnLink.empty(); // clears the attached music link before
+          
+                  ytDisp.attr('src','assets/images/youtube.png');
+                  ytDisp.attr('href','#modal2');
+                  ytDisp.attr('height', '55px');
+                  ytDisp.attr('width', '55px');
+                  ytDisp.attr('artist', artist);
+                  ytDisp.attr('track', track);
+                  ytDisp.addClass('waves-effect waves-light modal-trigger youtube');
+        
+                  imgDisplay.attr('height', '55px'); //album art variable height
+                  imgDisplay.attr('width', '55px'); //album art variable width
+                  imgDisplay.attr('src', albumArt); //album art variable width
+        
+        
+                  playBtn.addClass('material-icons playBtn');
+                  playBtn.attr('artist',artist);
+                  playBtn.attr('track',track);
+                  playBtn.attr('album',album);
+                  playBtn.text('send');
+        
+                  playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light green playBtn');
+                  // playBtnLink.attr('href','https://www.youtube.com/embed/DMilXF7ENps?rel=0');
+                  playBtnLink.append(playBtn);
+                  playBtnLink.attr('artist',artist);
+                  playBtnLink.attr('track',track);
+                  playBtnLink.attr('album',album);
+        
+                  modalBtn.addClass('waves-effect waves-light modal-trigger youtube');
+                  modalBtn.attr('artist', artist);
+                  modalBtn.attr('track', track);
+                  modalBtn.attr('href','#modal2');
+                  modalBtn.append(ytDisp);
+               
+                    // append all the table data elemnts to the rows and then row to the table
+                    // var artistTd = $('<td class="artist">').text(jsonPlaylist.playlist.artist);
+                    var albumCovTd = $('<td class="AlbumArt">').append(imgDisplay);
+                    var artistTd = $('<td class="Artist">').text(artist);
+                    var albumtTd = $('<td class="AlbumName">').text(album);
+                    var trackTd = $('<td class="trackName">').text(track);
+                    var trackLengthTd = $('<td class="tlength">').text(trackLength);
+                    var playTd = $('<td class="playMusic">').append(playBtnLink);
+                    var ytTd = $('<td class="youtube modal-trigger">').append(modalBtn);
+          
+                    tRow.addClass('finalTrackSelect hoverable')
+                    tRow.append(albumCovTd,artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
+                    tbl.append(tRow);
 
-          imgDisplay.attr('height', '55px'); //album art variable height
-          imgDisplay.attr('width', '55px'); //album art variable width
+                }); 
+          // ==============================================
 
-          playBtn.addClass('material-icons playBtn');
-          playBtn.attr('artist',artist);
-          playBtn.attr('track',track);
-          playBtn.attr('album',album);
-          playBtn.text('send');
-
-          playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light green playBtn');
-          playBtnLink.append(playBtn);
-          playBtnLink.attr('artist',artist);
-          playBtnLink.attr('track',track);
-          playBtnLink.attr('album',album);
-
-          modalBtn.addClass('waves-effect waves-light modal-trigger youtube');
-          modalBtn.attr('artist', artist);
-          modalBtn.attr('track', track);
-          modalBtn.attr('href','#modal2');
-          modalBtn.append(ytDisp);
-       
-            // append all the table data elemnts to the rows and then row to the table
-            // var artistTd = $('<td class="artist">').text(jsonPlaylist.playlist.artist);
-            var albumCovTd = $('<td class="AlbumArt">').append(imgDisplay);
-            var artistTd = $('<td class="Artist">').text(artist);
-            var albumtTd = $('<td class="AlbumName">').text(album);
-            var trackTd = $('<td class="trackName">').text(track);
-            var trackLengthTd = $('<td class="tlength">').text(trackLength);
-            var playTd = $('<td class="playMusic">').append(playBtnLink);
-            var ytTd = $('<td class="youtubeTd">').append(modalBtn);
-  
-            tRow.addClass('finalTrackSelect hoverable')
-            tRow.append(albumCovTd,artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
-            tbl.append(tRow);
         } // END for loop
-
-
-
       }); 
-
 
       // ====================================================
 
