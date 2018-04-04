@@ -240,7 +240,7 @@
         // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
         console.log('fbFinalPlaylist', fbFinalPlaylist[0]);
 
-        var tapeLabel = $('<div class ="mixtapeLabel">')
+        var tapeLabel = $('<div class ="mixtapeLabel2">')
           console.log(fbFinalMixtapeName);
           tapeLabel.append('<h5>' + fbFinalMixtapeName + '</h5>'); 
           
