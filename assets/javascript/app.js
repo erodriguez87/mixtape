@@ -210,6 +210,7 @@
         var fbFinalUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
         var fbFinalPlaylist = snapshot.child('mixtapeInfo/playlist').val();
         var fbFinalUserName = snapshot.child('mixtapeInfo/userName').val();
+        var fbFinalTapeInfo = snapshot.child('mixtapeInfo/description').val();
         // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
         // console.log('fbFinalPlaylist', fbFinalPlaylist[0]);
 
@@ -223,7 +224,7 @@
           $('.mixtapeCover').prepend(tapeImage, tapeLabel); 
           
         $(".finalUserInfo").append ('<h5>' + 'A Mixtape By: ' + '<br>' + fbFinalUserName + '</h5>');
-        // $(".finalUserInfo").append ('<h5>' + 'Description: ' + fbFinalTapeInfo + '</h5>')
+        $(".finalUserInfo").append ('<h5>' + 'About this Tape: ' + '<br>' + fbFinalTapeInfo + '</h5>')
 
 
         //for loop to loop through the object returned from firebase
