@@ -345,7 +345,7 @@
 
     var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
     var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=' + apiKey + '&artist=' + artist + '&track=' + trackName + '&format=json'; 
-
+    console.log('last fm url ' + queryURL)
     // // http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=7b595b1c67e159509af67e6e4e94cbb4&artist=cher&track=believe&format=json
 
     $.ajax({
@@ -353,7 +353,6 @@
           method: 'GET',
         }).then(function(response) {
           albumArt = response.track.album.image[1]['#text']; 
-          console.log(queryURL); 
           console.log(response); 
           console.log(albumArt) 
         });
