@@ -20,52 +20,52 @@
   firebase.initializeApp(config);
   var database = firebase.database();
 
-  // ===== pull from DB most recent playlists ============
+    // ===== pull from DB most recent playlists ======
 
-    database.ref().limitToLast(4).on('child_added', function(snapshot, prevChildKey) {
-      
-      var fbMixtapeName = snapshot.child('mixtapeInfo/mixtapeName').val();
-      var fbPlaylist = snapshot.child('mixtapeInfo/playlist').val();
-      var fbUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
-      // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
+      database.ref().limitToLast(4).on('child_added', function(snapshot, prevChildKey) {
+        
+        var fbMixtapeName = snapshot.child('mixtapeInfo/mixtapeName').val();
+        var fbPlaylist = snapshot.child('mixtapeInfo/playlist').val();
+        var fbUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
+        console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
 
-      // console.log(fbPlaylist[0].values[0].trackName);
-      var song1 = fbPlaylist[0].values[0].trackName + ' by ' + fbPlaylist[0].values[0].artist; 
-      var song2 = fbPlaylist[0].values[1].trackName + ' by ' + fbPlaylist[0].values[1].artist; 
-      var song3 = fbPlaylist[0].values[2].trackName + ' by ' + fbPlaylist[0].values[2].artist; 
-      var song4 = fbPlaylist[0].values[3].trackName + ' by ' + fbPlaylist[0].values[3].artist; 
-      var song5 = fbPlaylist[0].values[4].trackName + ' by ' + fbPlaylist[0].values[4].artist; 
-
-
-      // === create new divs for recent playlists
-      var tempDiv = $('<div class = "box recentPlaylist white center-align">');
-      var tempCardDiv = $('<div class="card">'); 
-      var tempImageDiv = $('<div class="card-image">'); 
-        var tapeLabel = $('<div class ="mixtapeLabel">')
-          // console.log(fbMixtapeName);
-          tapeLabel.append('<h5>' + fbMixtapeName + '</h5>'); 
-        var tapeImage = $('<img class="recentTapes">'); 
-          tapeImage.attr('src', fbUserTapeSelection); 
-          tempImageDiv.append(tapeImage, tapeLabel); 
-      var tempPlaylistDiv = $('<div class="card-content">'); 
-        var songs = $('<ul>'); 
-        songs.append('<li>', song1);
-        songs.append('<li>', song2);
-        songs.append('<li>', song3);
-        songs.append('<li>', song4);
-        songs.append('<li>', song5);
+        // console.log(fbPlaylist[0].values[0].trackName);
+        var song1 = fbPlaylist[0].values[0].trackName + ' by ' + fbPlaylist[0].values[0].artist; 
+        var song2 = fbPlaylist[0].values[1].trackName + ' by ' + fbPlaylist[0].values[1].artist; 
+        var song3 = fbPlaylist[0].values[2].trackName + ' by ' + fbPlaylist[0].values[2].artist; 
+        var song4 = fbPlaylist[0].values[3].trackName + ' by ' + fbPlaylist[0].values[3].artist; 
+        var song5 = fbPlaylist[0].values[4].trackName + ' by ' + fbPlaylist[0].values[4].artist; 
 
 
-        tempPlaylistDiv.html(songs); 
+        // === create new divs for recent playlists
+        var tempDiv = $('<div class = "box recentPlaylist white center-align">');
+        var tempCardDiv = $('<div class="card">'); 
+        var tempImageDiv = $('<div class="card-image">'); 
+          var tapeLabel = $('<div class ="mixtapeLabel">')
+            // console.log(fbMixtapeName);
+            tapeLabel.append('<h5>' + fbMixtapeName + '</h5>'); 
+          var tapeImage = $('<img class="recentTapes">'); 
+            tapeImage.attr('src', fbUserTapeSelection); 
+            tempImageDiv.append(tapeImage, tapeLabel); 
+        var tempPlaylistDiv = $('<div class="card-content">'); 
+          var songs = $('<ul>'); 
+          songs.append('<li>', song1);
+          songs.append('<li>', song2);
+          songs.append('<li>', song3);
+          songs.append('<li>', song4);
+          songs.append('<li>', song5);
 
-      $(tempCardDiv).append(tempImageDiv,tempPlaylistDiv);
-      $(tempDiv).append(tempCardDiv); 
-      $(tempDiv).insertAfter('.recentHeader'); 
 
-    });
+          tempPlaylistDiv.html(songs); 
 
+        $(tempCardDiv).append(tempImageDiv,tempPlaylistDiv);
+        $(tempDiv).append(tempCardDiv); 
+        $(tempDiv).insertAfter('.recentHeader'); 
 
-// ====================================================
+      }); // END Firebase pull
+    // ===============================================
+// =====================================================
+
 
 // =====Tape Selector ===============================================
   var tapeImageArray = []; 
@@ -74,8 +74,7 @@
   var tape3 = $('<img class="tapeImages" id="tape3" src="assets/images/tape3.png" style="width:100%">'); 
   var tape4 = $('<img class="tapeImages" id="tape4" src="assets/images/tape4.jpg" style="width:100%">'); 
   var tape5 = $('<img class="tapeImages" id="tape5" src="assets/images/tape5.png" style="width:100%">'); 
-  var tape6 = $('<img class="tapeImages" id="tape6" src="assets/images/tape6.jpg" style="width:100%">'); 
-  tapeImageArray.push(tape1, tape2, tape3, tape4, tape5, tape6); 
+  tapeImageArray.push(tape1, tape2, tape3, tape4, tape5); 
   // console.log(tapeImageArray[0]); 
   var tape = 0
   $('.images').html(tapeImageArray[tape]); 
@@ -106,12 +105,12 @@
 // ==================================================================
 
 // =====  Mixtape Info ===============================================
-// Mixtape info
-$('.saveBtn').on('click', function() {
-  if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length != 0) {
-    $('.mixButtonContainer').append('<a class="waves-effect waves-light btn-large mixtapeInfoSave pink darken-3" href ="pageTwo.html" >MIX MIX MIX MIX MIX MIX MIX MIX MIX</a>'); 
-  } // END IF
-}); 
+
+// $('.saveBtn').on('click', function() {
+//   if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length != 0) {
+//     $('.mixButtonContainer').append('<a class="waves-effect waves-light btn-large mixtapeInfoSave pink darken-3" href ="pageTwo.html" >MIX MIX MIX MIX MIX MIX MIX MIX MIX</a>'); 
+//   } // END IF
+// }); 
 
   $('.mixtapeInfoSave').on('click', function() {
     // event.preventDefault();
@@ -120,21 +119,17 @@ $('.saveBtn').on('click', function() {
     var userName = $('#userName').val(); 
     var userEmail = $('#userEmail').val();   
     var description = $('#description').val();   
-    // var playlistDiv = $('.playlistWIP'); 
     var mixtapeInfo = {
-      // timeStamp: firebase.database.ServerValue.TIMESTAMP,
       mixtapeName: mixtapeName,
       userName: userName, 
       userEmail: userEmail,
       description: description,
       userTapeSelection: userTapeSelection, 
       playlist: jsonPlaylist,
-      // playlistDiv: playlistDiv
     }
 
     // count how many rows in the table 
     var trackCount = $('.playlistWIP').find('tr').length;
-    // console.log(trackCount); 
 
     var userPlaylist = {}; 
     var playlistTable = $('#playlistComplete'); 
@@ -166,12 +161,9 @@ $('.saveBtn').on('click', function() {
         jsonPlaylist.push({values}); //key?
         i = i+3; 
       }
-      // genFinPlaylist(jsonPlaylist); 
-    }
-
-
+    };
     GetCellValues();
-    // genFinPlaylist(jsonPlaylist); 
+
 
     database.ref().push({
       timestamp: firebase.database.ServerValue.TIMESTAMP,
