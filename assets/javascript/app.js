@@ -27,7 +27,7 @@
         var fbMixtapeName = snapshot.child('mixtapeInfo/mixtapeName').val();
         var fbPlaylist = snapshot.child('mixtapeInfo/playlist').val();
         var fbUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
-        console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
+        // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
 
         // console.log(fbPlaylist[0].values[0].trackName);
         var song1 = fbPlaylist[0].values[0].trackName + ' by ' + fbPlaylist[0].values[0].artist; 
