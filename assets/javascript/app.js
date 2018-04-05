@@ -106,11 +106,18 @@
 
 // =====  Mixtape Info ===============================================
 
-// $('.saveBtn').on('click', function() {
-//   if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length != 0) {
-//     $('.mixButtonContainer').append('<a class="waves-effect waves-light btn-large mixtapeInfoSave pink darken-3" href ="pageTwo.html" >MIX MIX MIX MIX MIX MIX MIX MIX MIX</a>'); 
-//   } // END IF
-// }); 
+$(".mixtapeInfoSave").attr('disabled','disabled');
+
+
+$('.saveBtn').on('click', function() {
+  if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length != 0) {
+    $(".mixtapeInfoSave").removeAttr('disabled');
+    $(".mixtapeInfoSave").addClass('pulse');
+    
+  } // END if
+}); 
+
+
 
   $('.mixtapeInfoSave').on('click', function() {
     // event.preventDefault();
@@ -118,12 +125,10 @@
     var mixtapeName = $('#mixtapeName').val(); 
     var userName = $('#userName').val(); 
     var userEmail = $('#userEmail').val();   
-    var description = $('#description').val();   
     var mixtapeInfo = {
       mixtapeName: mixtapeName,
       userName: userName, 
       userEmail: userEmail,
-      description: description,
       userTapeSelection: userTapeSelection, 
       playlist: jsonPlaylist,
     }
