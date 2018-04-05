@@ -185,7 +185,7 @@
       //  set up variables for the table
       var tBody = $('.finalPlaylist');
       var tbl   = $('<table>');
-      var tblH  = $('<tr><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Play</th><th>Youtube</th>')
+      var tblH  = $('<tr><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Album Info</th><th>Youtube</th>')
       
       // set up table headers
       tbl.append(tblH);
@@ -282,7 +282,7 @@
 
 // ==================================================================
 
-// On click to open modal and search youtube API
+// Youtube API --- On click to open modal and search youtube API
 // ==================================================================
   $('.finalPlaylist').on('click', '.youtube', function() {
     var artist = $(this).attr('artist');
