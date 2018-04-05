@@ -82,7 +82,8 @@
   }); 
 
   $('.playlistWIP').on('click', '.trackSelect', function() {
-    $(this).remove(); 
+    $('.searchDump').append(this); 
+    // $(this).remove(); 
   }); 
 
 // ==================================================================
