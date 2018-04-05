@@ -120,38 +120,5 @@
 
 // ==================================================================
 
-// Call to LastFM for Album Info when user selects song from playlist
-$('.finalPlaylist').on('click', '.playBtn', function() {  
-  var artist = $(this).attr('artist'); 
-  var track = $(this).attr('track'); 
-  var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
-  var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=' + apiKey + '&artist=' + artist + '&track=' + track + '&format=json'; 
-  $.ajax({
-    url: queryURL,
-    method: 'GET',
-  }).then(function(response) {
-    // console.log(response.album.image[1]['#text']); 
-    trackSummary = response.track.wiki.content; 
-    console.log(trackSummary)
-    trackSummaryP = $('<p>').html(trackSummary); 
-    $('.summary').html(trackSummary); 
 
-
-  });
-
-
-}); 
-  
-  
-  
-
-    // lyricsP = $('<p>').append(trackLyrics); 
-    // lyricsCopyright = '<br>' + response.message.body.lyrics.lyrics_copyright; 
-    // // $('<img src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuXW">'); 
-    // $('.lyrics').html(lyricsP);
-    // $('.lyrics').append(lyricsCopyright); 
-  
-
-
-// ==================================================================
 

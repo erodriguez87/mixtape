@@ -338,30 +338,61 @@
   }); 
 
 
-// ====LastFM API Call for Album Art=============
-  $('.finalPlaylist').on('click', '.playBtn', function() {
-    var artist = $(this).attr('artist');
-    var trackName = $(this).attr('track');  
-    var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
+// ====LastFM API Call for Album Art and Album Info=============
+  // $('.finalPlaylist').on('click', '.playBtn', function() {
+  //   var artist = $(this).attr('artist');
+  //   var trackName = $(this).attr('track');  
+  //   var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
 
-    var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=' + apiKey + '&artist=' + artist + '&track=' + trackName + '&format=json'; 
-    console.log('last fm url ' + queryURL)
-    // // http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=7b595b1c67e159509af67e6e4e94cbb4&artist=cher&track=believe&format=json
+  //   var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=' + apiKey + '&artist=' + artist + '&track=' + trackName + '&format=json'; 
+  //   console.log('last fm url ' + queryURL)
+  //   // // http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=7b595b1c67e159509af67e6e4e94cbb4&artist=cher&track=believe&format=json
 
-    $.ajax({
-          url: queryURL,
-          method: 'GET',
-        }).then(function(response) {
-          albumArt = response.track.album.image[1]['#text']; 
-          console.log(response); 
-          console.log(albumArt) 
-          var albumArtLast = $('<img>');
-          albumArtLast.attr('src',albumArt);
-          $('.shareTunes').append(albumArtLast);
+  //   $.ajax({
+  //         url: queryURL,
+  //         method: 'GET',
+  //       }).then(function(response) {
+  //         albumArt = response.track.album.image[1]['#text']; 
+  //         console.log(response); 
+  //         console.log(albumArt) 
+  //         var albumArtLast = $('<img>');
+  //         albumArtLast.attr('src',albumArt);
+  //         $('.shareTunes').append(albumArtLast);
 
 
-        });
-  });
+  //       });
+  // });
+
+
+  // ====LastFM API Call for Album Info=====================
+    $('.finalPlaylist').on('click', '.playBtn', function() {  
+      var artist = $(this).attr('artist'); 
+      var album = $(this).attr('album'); 
+      var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
+      var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=' + apiKey + '&artist=' + artist + '&album=' + album + '&format=json'; 
+      $.ajax({
+        url: queryURL,
+        method: 'GET',
+      }).then(function(response) {
+        console.log(queryURL); 
+        var albumArt = response.album.image[3]['#text']; 
+        console.log(albumArt) 
+        var albumArtLast = $('<img>');
+        albumArtLast.attr('src',albumArt);
+        $('.albumImage').html(albumArtLast);
+
+        var albumSummary = response.album.wiki.content; 
+        console.log(albumSummary)
+        var albumSummaryP = $('<p>').html(albumSummary); 
+        $('.summary').html(albumSummary); 
+
+
+      });
+    }); 
+      
+  // =======================================================
+
+// ==================================================================
 
 }); // End Document.ready
 
