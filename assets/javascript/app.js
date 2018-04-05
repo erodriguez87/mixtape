@@ -107,6 +107,11 @@
 
 // =====  Mixtape Info ===============================================
 // Mixtape info
+$('.saveBtn').on('click', function() {
+  if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length != 0) {
+    $('.mixButtonContainer').append('<a class="waves-effect waves-light btn-large mixtapeInfoSave pink darken-3" href ="pageTwo.html" >MIX MIX MIX MIX MIX MIX MIX MIX MIX</a>'); 
+  } // END IF
+}); 
 
   $('.mixtapeInfoSave').on('click', function() {
     // event.preventDefault();
