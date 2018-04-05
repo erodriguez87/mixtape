@@ -193,7 +193,7 @@ $('.saveBtn').on('click', function() {
       //  set up variables for the table
       var tBody = $('.finalPlaylist');
       var tbl   = $('<table>');
-      var tblH  = $('<tr><th>Album Cover</th><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Play</th><th>Youtube</th>')
+      var tblH  = $('<tr><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Play</th><th>Youtube</th>')
       
       // set up table headers
       tbl.append(tblH);
@@ -224,7 +224,6 @@ $('.saveBtn').on('click', function() {
 
 
           var tRow = $('<tr>'); 
-          var imgDisplay = $('<img>');
           var ytDisp = $('<img>');
           var playBtnLink = $('<a>');
           var playBtn = $('<i>');
@@ -241,9 +240,6 @@ $('.saveBtn').on('click', function() {
           ytDisp.attr('artist', artist);
           ytDisp.attr('track', track);
           ytDisp.addClass('waves-effect waves-light');
-
-          imgDisplay.attr('height', '55px'); //album art variable height
-          imgDisplay.attr('width', '55px'); //album art variable width
 
           playBtn.addClass('material-icons playBtn');
           playBtn.attr('artist',artist);
@@ -265,7 +261,6 @@ $('.saveBtn').on('click', function() {
       
             // append all the table data elemnts to the rows and then row to the table
             // var artistTd = $('<td class="artist">').text(jsonPlaylist.playlist.artist);
-            var albumCovTd = $('<td class="AlbumArt">').append(imgDisplay);
             var artistTd = $('<td class="Artist">').text(artist);
             var albumtTd = $('<td class="AlbumName">').text(album);
             var trackTd = $('<td class="trackName">').text(track);
@@ -274,7 +269,7 @@ $('.saveBtn').on('click', function() {
             var ytTd = $('<td class="youtubeTd">').append(modalBtn);
 
             tRow.addClass('finalTrackSelect hoverable')
-            tRow.append(albumCovTd,artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
+            tRow.append(artistTd,albumtTd,trackTd,trackLengthTd,playTd,ytTd);
             tbl.append(tRow);
         } // END for loop
         $(".finalUserInfo").append ('<h5>' + 'A Mixtape By: ' + '<br>' + fbFinalUserName + '</h5>');
