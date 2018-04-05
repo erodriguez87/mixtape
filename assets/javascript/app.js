@@ -341,7 +341,7 @@
 // ====LastFM API Call for Album Art=============
   $('.finalPlaylist').on('click', '.playBtn', function() {
     var artist = $(this).attr('artist');
-    var track = $(this).attr('track');  
+    var trackName = $(this).attr('track');  
 
     var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
     var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=' + apiKey + '&artist=' + artist + '&track=' + trackName + '&format=json'; 
