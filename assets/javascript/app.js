@@ -339,20 +339,25 @@
 
 
 // ====LastFM API Call for Album Art=============
-  // var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
-  // var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=' + apiKey + '&artist=' + artist + '&track=' + trackName + '&format=json'; 
+  $('.finalPlaylist').on('click', '.playBtn', function() {
+    var artist = $(this).attr('artist');
+    var track = $(this).attr('track');  
 
-  // // http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=7b595b1c67e159509af67e6e4e94cbb4&artist=cher&track=believe&format=json
+    var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
+    var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=' + apiKey + '&artist=' + artist + '&track=' + trackName + '&format=json'; 
 
-  // $.ajax({
-  //       url: queryURL,
-  //       method: 'GET',
-  //     }).then(function(response) {
-  //       albumArt = response.track.album.image[1]['#text']; 
-  //       console.log(queryURL); 
-  //       console.log(response); 
-  //       console.log(albumArt) 
-  //     });
+    // // http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=7b595b1c67e159509af67e6e4e94cbb4&artist=cher&track=believe&format=json
+
+    $.ajax({
+          url: queryURL,
+          method: 'GET',
+        }).then(function(response) {
+          albumArt = response.track.album.image[1]['#text']; 
+          console.log(queryURL); 
+          console.log(response); 
+          console.log(albumArt) 
+        });
+  });
 
 }); // End Document.ready
 
