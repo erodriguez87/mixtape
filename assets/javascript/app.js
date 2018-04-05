@@ -237,9 +237,9 @@
           playBtn.attr('artist',artist);
           playBtn.attr('track',track);
           playBtn.attr('album',album);
-          playBtn.text('send');
+          playBtn.text('info');
 
-          playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light green playBtn modal-trigger');
+          playBtnLink.addClass('btn-floating btn-medium waves-effect waves-light blue-darken-3 playBtn modal-trigger');
           playBtnLink.append(playBtn);
           playBtnLink.attr('artist',artist);
           playBtnLink.attr('track',track);
