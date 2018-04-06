@@ -366,7 +366,7 @@ $('.saveBtn').on('click', function() {
       var artist = $(this).attr('artist'); 
       var album = $(this).attr('album'); 
       var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
-      var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=' + apiKey + '&artist=' + artist + '&album=' + album + '&format=json'; 
+      var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=' + apiKey + '&artist=' + artist + '&album=' + album + '&format=json'; 
       $.ajax({
         url: queryURL,
         method: 'GET',
