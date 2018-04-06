@@ -105,7 +105,7 @@
   $(".mixtapeInfoSave").attr('disabled','disabled');
 
   $('.saveBtn').on('click', function() {
-    if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length != 0) {
+    if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length >= 5) {
       $(".mixtapeInfoSave").removeAttr('disabled');
       $(".mixtapeInfoSave").addClass('pulse');
       
@@ -187,7 +187,7 @@
       tbl.append(tblH);
 
       // ===== pull from DB to populate FINAL playlist=======
-      database.ref().limitToLast(1).on('child_added', function(snapshot, prevChildKey) {
+      database.ref().limitToLast(1).once('child_added', function(snapshot, prevChildKey) {
               
         var fbFinalMixtapeName = snapshot.child('mixtapeInfo/mixtapeName').val();
         var fbFinalUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
@@ -264,13 +264,13 @@
 
 
 
-      }); 
+      }); //END firebase pull
 
     // Adds the table to the html  
     tbl.addClass("table highlight");
     tBody.append(tbl);
     
-  };
+  }; //END genFinPlaylist
   genFinPlaylist(jsonPlaylist);
   
 
@@ -328,9 +328,10 @@
       url: queryURL,
       method: 'GET'
     }).then(function(response) {
-      // console.log(queryURL); 
+      $('.albumImage').empty(); 
+      $('.summary').empty(); 
+
       var albumArt = response.album.image[3]['#text']; 
-      // console.log(albumArt) 
       var albumArtLast = $('<img>');
       albumArtLast.attr('src',albumArt);
       $('.albumImage').html(albumArtLast);
