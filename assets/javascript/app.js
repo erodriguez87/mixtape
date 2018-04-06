@@ -5,10 +5,11 @@
   var youObj =  {};
   var objectsRet = {};
   var iframeUrl;
+
   $(document).ready(function() {
 // ==================================================================
 
-// ==== Firebase integration ======================================
+// ==== Firebase integration ========================================
   var config = {
     apiKey: "AIzaSyAG5Hd-FWiTUqqHFLM6ag-eksuRF6BHVZ4",
     authDomain: "mxtp-68055.firebaseapp.com",
@@ -60,8 +61,7 @@
 
       }); // END Firebase pull
     // ===============================================
-// =====================================================
-
+// ==================================================================
 
 // =====Tape Selector ===============================================
   var tapeImageArray = []; 
@@ -93,27 +93,24 @@
   }); //END 
 // ==================================================================
 
-// // Modal =============================================================
+// ====Modal ========================================================
   $(document).ready(function(){
     $('.modal-trigger').modal();
     $('#modal1').modal();
   });
 // ==================================================================
 
-// =====  Mixtape Info ===============================================
+// =====Mixtape Info=================================================
 
-$(".mixtapeInfoSave").attr('disabled','disabled');
+  $(".mixtapeInfoSave").attr('disabled','disabled');
 
-
-$('.saveBtn').on('click', function() {
-  if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length != 0) {
-    $(".mixtapeInfoSave").removeAttr('disabled');
-    $(".mixtapeInfoSave").addClass('pulse');
-    
-  } // END if
-}); 
-
-
+  $('.saveBtn').on('click', function() {
+    if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length != 0) {
+      $(".mixtapeInfoSave").removeAttr('disabled');
+      $(".mixtapeInfoSave").addClass('pulse');
+      
+    } // END if
+  }); 
 
   $('.mixtapeInfoSave').on('click', function() {
     // event.preventDefault();
@@ -173,11 +170,9 @@ $('.saveBtn').on('click', function() {
 
   })
 
-
-
 // ==================================================================
 
-// Final Playlist
+// ====Final Playlist================================================
   function genFinPlaylist () {
     console.log('in fin playlist');
       // $('.modal-trigger').leanModal();
@@ -279,20 +274,14 @@ $('.saveBtn').on('click', function() {
   genFinPlaylist(jsonPlaylist);
   
 
-// ====================================================
-
 // ==================================================================
 
-// Youtube API --- On click to open modal and search youtube API
-// ==================================================================
+// ====Youtube API===================================================
   $('.finalPlaylist').on('click', '.youtube', function() {
     var artist = $(this).attr('artist');
     var track = $(this).attr('track');
     
-    console.log('artist and track click ' + artist + track);
-      // Youtube API ======================================================
-      // ==================================================================
-      // Need to get the trackname and artist passed from music match. This section searches the youtube API for a mix of the track and artist and returns the top 10 results.
+    // Need to get the trackname and artist passed from music match. This section searches the youtube API for a mix of the track and artist and returns the top 10 results.
     
       function searchYoutube(trackPass,artistPass) {
         // set variables for search and establish youtube key
@@ -322,70 +311,39 @@ $('.saveBtn').on('click', function() {
     
         }); 
       } 
-      // ==================================================================
     searchYoutube(track,artist);
     $('#modal2').modal();
     $('#modal2').modal('open'); 
-  // ==================================================================
-
   }); 
-
-
-// ====LastFM API Call for Album Art and Album Info=============
-  // $('.finalPlaylist').on('click', '.playBtn', function() {
-  //   var artist = $(this).attr('artist');
-  //   var trackName = $(this).attr('track');  
-  //   var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
-
-  //   var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=track.getinfo&api_key=' + apiKey + '&artist=' + artist + '&track=' + trackName + '&format=json'; 
-  //   console.log('last fm url ' + queryURL)
-  //   // // http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=7b595b1c67e159509af67e6e4e94cbb4&artist=cher&track=believe&format=json
-
-  //   $.ajax({
-  //         url: queryURL,
-  //         method: 'GET',
-  //       }).then(function(response) {
-  //         albumArt = response.track.album.image[1]['#text']; 
-  //         console.log(response); 
-  //         console.log(albumArt) 
-  //         var albumArtLast = $('<img>');
-  //         albumArtLast.attr('src',albumArt);
-  //         $('.shareTunes').append(albumArtLast);
-
-
-  //       });
-  // });
-
-
-  // ====LastFM API Call for Album Info=====================
-    $('.finalPlaylist').on('click', '.playBtn', function() {  
-      var artist = $(this).attr('artist'); 
-      var album = $(this).attr('album'); 
-      var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
-      var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=' + apiKey + '&artist=' + artist + '&album=' + album + '&format=json'; 
-      $.ajax({
-        url: queryURL,
-        method: 'GET',
-      }).then(function(response) {
-        console.log(queryURL); 
-        var albumArt = response.album.image[3]['#text']; 
-        console.log(albumArt) 
-        var albumArtLast = $('<img>');
-        albumArtLast.attr('src',albumArt);
-        $('.albumImage').html(albumArtLast);
-
-        var albumSummary = response.album.wiki.content; 
-        console.log(albumSummary)
-        var albumSummaryP = $('<p>').html(albumSummary); 
-        $('.summary').html(albumSummary); 
-
-
-      });
-    }); 
-      
-  // =======================================================
-
 // ==================================================================
+
+// ====LastFM API Call for Album Info================================
+  $('.finalPlaylist').on('click', '.playBtn', function() {  
+    var artist = $(this).attr('artist'); 
+    var album = $(this).attr('album'); 
+    var apiKey = '7b595b1c67e159509af67e6e4e94cbb4';
+    var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=' + apiKey + '&artist=' + artist + '&album=' + album + '&format=json'; 
+    // console.log(queryURL); 
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).then(function(response) {
+      // console.log(queryURL); 
+      var albumArt = response.album.image[3]['#text']; 
+      // console.log(albumArt) 
+      var albumArtLast = $('<img>');
+      albumArtLast.attr('src',albumArt);
+      $('.albumImage').html(albumArtLast);
+      var albumSummary = response.album.wiki.content; 
+      // console.log(albumSummary)
+      var albumSummaryP = $('<p>').html(albumSummary); 
+      $('.summary').html(albumSummary); 
+
+    });
+  }); 
+      
+// ==================================================================
+
 
 }); // End Document.ready
 
