@@ -62,7 +62,8 @@
     // Adds the table to the html  
     tbl.addClass("table highlight");
     tbl.append(tBody); 
-    tableMain.append(tbl);
+    var title = $('<h4 class="searchPlayTitles">'+'Search!'+'</h4>')
+    tableMain.append(title, tbl);
     
     }
     //ajax call that returns a search from musix match. populates a div that users can use to select songs for the playlist
@@ -78,7 +79,10 @@
 // ====MusixMatch Logic- move items to/from search & Playlist========
   $('.searchDump').on('click', '.trackSelect', function() {
       var tblH = $('<tr><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th>')
-      $('#playlistWIPHead').html(tblH);
+      var mixtapeName = $('#mixtapeName').val(); 
+      var title = $('<h4 class="searchPlayTitles">'+ mixtapeName +'</h4>')
+
+      $('#playlistWIPHead').html(title, tblH);
     $('.playlistWIP').append(this); 
   }); 
 
