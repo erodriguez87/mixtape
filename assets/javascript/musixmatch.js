@@ -1,11 +1,9 @@
-//MusixMatch API connection and Searching for Songs
-  // ==================================================================
+// ====MusixMatch API connection and Searching for Songs=============
   // Connection to musixmatch service, returns based on user search from html. It also passes a value into the youtube API Search. The request we made calls a jsonp file. That required a special function to parse it correctly.
   $("#clear").on("click", function() {
     $('.searchInput :input').val('');
   }); // ----- END click event
 
-  
   $('.searchBtn').on('click', function (event) {
     event.preventDefault();
     
@@ -77,10 +75,8 @@
   });
 // ==================================================================
 
-// MusixMatch Logic to move search items from table to Playlist
-  // ==================================================================
+// ====MusixMatch Logic- move items to/from search & Playlist========
   $('.searchDump').on('click', '.trackSelect', function() {
-    // console.log(this); 
       var tblH = $('<tr><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th>')
       $('#playlistWIPHead').html(tblH);
     $('.playlistWIP').append(this); 
@@ -88,45 +84,6 @@
 
   $('.playlistWIP').on('click', '.trackSelect', function() {
     $('.searchDump').append(this); 
-    // $(this).remove(); 
   }); 
 
 // ==================================================================
-
-
-// Call to MusixMatch for lyrics when user selects song from playlist
-  // $('.finalPlaylist').on('click', '.playBtn', function() {   
-  //   var artist = $(this).attr('artist'); 
-  //   var track = $(this).attr('track'); 
-  //   console.log(artist, track); 
-  //   var apiKey = '76cb84616ac5b0e74b21c7674cb2b865';
-  //   var queryURL = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=' + track +'&q_artist=' + artist + '&s_artist_rating=desc'+ '&apikey=' + apiKey;    
-    
-  //   // https://api.musixmatch.com/ws/1.1/track.search?format=jsonp&callback=callback&q_track=slowride&q_artist=foghat&s_artist_rating=desc&apikey=76cb84616ac5b0e74b21c7674cb2b865
-  //   // https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=slowride&q_artist=foghat&s_artist_rating=desc&apikey=76cb84616ac5b0e74b21c7674cb2b865
-
-  //   function fetchLyrics(response) {
-  //     console.log(queryURL); 
-  //     var trackLyrics = response.message.body.lyrics.lyrics_body; 
-  //     console.log(trackLyrics); 
-  //     lyricsP = $('<p>').append(trackLyrics); 
-  //     lyricsCopyright = '<br>' + response.message.body.lyrics.lyrics_copyright; 
-  //     // $('<img src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuXW">'); 
-  //     $('.lyrics').html(lyricsP);
-  //     $('.lyrics').append(lyricsCopyright); 
-  //   }
-
-  //   $.ajax({
-  //     url: queryURL,
-  //     method: 'GET',
-  //     dataType: 'jsonp',
-  //     jsonpCallback: 'fetchLyrics'
-  //   }).then(fetchLyrics); 
-
-  // }); 
-
-
-// ==================================================================
-
-
-

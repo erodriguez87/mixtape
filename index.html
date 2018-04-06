@@ -2,30 +2,34 @@
   <meta charset="UTF-8">
   <title>MXTP</title>
   <meta name="viewport" content="width=device-width">
-<!-- Links to CSS, CDN, then custom below to override -->
+
+  <!-- Links to CSS, CDN, then custom below to override -->
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
   
-  <!-- Compiled and minified CSS -->
+  <!-- Compiled and minified Materialize -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://momentjs.com/downloads/moment.min.js"></script>
 
   <title>Mixtape</title> 
   
 </head>
 
 <body>
-<!--tapeSelection div --> 
+
   <div class="wrapper">
+
+    <!-- header -->
     <div class="box header white">
       <img src = "assets/images/logo.png"></a>
-    </div>
+    </div> 
+    <!-- END header -->
 
+    <!-- mixtapeInfo -->
     <div class="box mixtapeInfo white" id="tape-form">
       <div class="box white" id = "form-title">Let's make a tape!</div>
       <form>
@@ -38,21 +42,24 @@
           <label for="userName">Made by (Required)</label>
         </div>
         <div class="input-field">
-            <input id="userEmail" type="email" class="validate">
-            <label for="userEmail">Email</label>
+          <input id="userEmail" type="email" class="validate">
+          <label for="userEmail">Email</label>
         </div>
       </form>
 
     </div>
+    <!-- END mixtapeInfo -->
+
+    <!-- tapeSelection -->
     <div class="box tapeSelection white">
       <div class="images"></div>
       <a class="waves-effect waves-light btn-floating btn-large pulse tapeBtns pink darken-3" id="arrowBtnL"><i class="material-icons right">arrow_back</i></a>
       <a class="waves-effect waves-light btn-large btn-floating pulse tapeBtns pink darken-3" id="arrowBtnR"><i class="material-icons right">arrow_forward</i></a>
-    </div> <!--END tapeSelection DIV -->
+    </div> 
+    <!--END tapeSelection -->
 
 
-<!--searchBox-->
-
+    <!--searchBox-->
     <div class="box searchBox white">
       <form>
         <div class="input-field">
@@ -62,48 +69,42 @@
               <label for="searchArtist">Search Artist</label>
             </div>
             <div class="input-field searchInput col s6">
-                <input id="searchTrack" type="text" class="validate">
-                <label for="searchTrack">Search Track</label>
-              </div>
+              <input id="searchTrack" type="text" class="validate">
+              <label for="searchTrack">Search Track</label>
+            </div>
           </div>
         </div>
       </form>
+
       <div class ="button-container center-align">
         <a class="searchBtn waves-effect waves-light btn pink darken-3">Search<i class="material-icons right">send</i></a>
         <a class="clear waves-effect waves-light btn pink darken-3" id ="clear">Clear</a>
         <a class="waves-effect waves-light btn saveBtn pink darken-3">Save</a>
         <a class="waves-effect waves-light btn mixtapeInfoSave pink darken-3" id="mixBtn" href = "pageTwo.html">Ready to MIX!</a>
-        <!-- href = "pageTwo.html" -->
-      
       </div>
-
-
-    </div> <!-- END searchBox -->
+    </div> 
+    <!-- END searchBox -->
     
     <div class="box searchDump white"></div>
-  <!--playlist-->
 
+    <!--playlist-->
     <div class="box playlist white">
       <table  class="highlight">
-          <thead id="playlistWIPHead">
-            <!-- <tr>
-              <th>Artist</th>
-              <th>Album</th>
-              <th>Track Name</th>
-              <th>Track Length</th>
-            </tr> -->
-          </thead>
-        
-        <tbody class="playlistWIP" id="playlistComplete">
-        </tbody>
+        <thead id="playlistWIPHead"></thead>
+        <tbody class="playlistWIP" id="playlistComplete"></tbody>
       </table>
-    </div> <!-- END playlist -->
-  
+    </div> 
+    <!-- END playlist -->
   
     <div class="box recentHeader white center-align" id ="recentLists"><h3>Recently Added Playlists</h3></div>
 
-
     <div class="box footer pink darken-3 center-align"><h5>Keepin' it Old Skool ... Kinda'</h5></div>
+
+  
+    
+  </div>
+  <!--END wrapper-->
+
 
   <!-- Code to the JavaScript File -->
   <script src="assets/javascript/app.js"></script>
