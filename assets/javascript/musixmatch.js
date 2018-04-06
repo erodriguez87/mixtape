@@ -27,10 +27,13 @@
        
       // variables for table
       $('.searchDump').empty();
-      var tBody = $('.searchDump');
+      var tableMain = $('.searchDump');
       var tbl = $('<table>');
+      var tHead = $('<thead>'); 
+      var tBody = $('<tbody>'); 
       var tblH = $('<tr><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th>')
-      tbl.append(tblH);
+      tHead.append(tblH); 
+      tbl.append(tHead);
 
       //for loop to loop through the top 10 search results from api and add them to an array
       for (i = 0; i < 10; i++) {
@@ -54,12 +57,14 @@
           tRow.attr('length', trackLength[i]);
           tRow.addClass('trackSelect hoverable')
           tRow.append(artistTd, albumTd, trackTd, trackLengthTd);
-          tbl.append(tRow);
+          tBody.append(tRow); 
+          // tbl.append(tRow);
       }
 
     // Adds the table to the html  
     tbl.addClass("table highlight");
-    tBody.append(tbl);
+    tbl.append(tBody); 
+    tableMain.append(tbl);
     
     }
     //ajax call that returns a search from musix match. populates a div that users can use to select songs for the playlist
