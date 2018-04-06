@@ -27,7 +27,7 @@
         var fbMixtapeName = snapshot.child('mixtapeInfo/mixtapeName').val();
         var fbPlaylist = snapshot.child('mixtapeInfo/playlist').val();
         var fbUserTapeSelection = snapshot.child('mixtapeInfo/userTapeSelection').val();
-        console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
+        // console.log(fbMixtapeName, fbPlaylist, fbUserTapeSelection);
 
         // console.log(fbPlaylist[0].values[0].trackName);
         var song1 = fbPlaylist[0].values[0].trackName + ' by ' + fbPlaylist[0].values[0].artist; 
@@ -106,11 +106,18 @@
 
 // =====  Mixtape Info ===============================================
 
-// $('.saveBtn').on('click', function() {
-//   if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length != 0) {
-//     $('.mixButtonContainer').append('<a class="waves-effect waves-light btn-large mixtapeInfoSave pink darken-3" href ="pageTwo.html" >MIX MIX MIX MIX MIX MIX MIX MIX MIX</a>'); 
-//   } // END IF
-// }); 
+$(".mixtapeInfoSave").attr('disabled','disabled');
+
+
+$('.saveBtn').on('click', function() {
+  if ($('#mixtapeName').val().length != 0 && $('#userName').val().length != 0 && $('.playlistWIP').find('tr').length != 0) {
+    $(".mixtapeInfoSave").removeAttr('disabled');
+    $(".mixtapeInfoSave").addClass('pulse');
+    
+  } // END if
+}); 
+
+
 
   $('.mixtapeInfoSave').on('click', function() {
     // event.preventDefault();
@@ -118,12 +125,10 @@
     var mixtapeName = $('#mixtapeName').val(); 
     var userName = $('#userName').val(); 
     var userEmail = $('#userEmail').val();   
-    var description = $('#description').val();   
     var mixtapeInfo = {
       mixtapeName: mixtapeName,
       userName: userName, 
       userEmail: userEmail,
-      description: description,
       userTapeSelection: userTapeSelection, 
       playlist: jsonPlaylist,
     }
@@ -185,7 +190,7 @@
       //  set up variables for the table
       var tBody = $('.finalPlaylist');
       var tbl   = $('<table>');
-      var tblH  = $('<tr><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Play</th><th>Youtube</th>')
+      var tblH  = $('<tr><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th><th>Album Info</th><th>Youtube</th>')
       
       // set up table headers
       tbl.append(tblH);
@@ -282,7 +287,7 @@
 
 // ==================================================================
 
-// On click to open modal and search youtube API
+// Youtube API --- On click to open modal and search youtube API
 // ==================================================================
   $('.finalPlaylist').on('click', '.youtube', function() {
     var artist = $(this).attr('artist');

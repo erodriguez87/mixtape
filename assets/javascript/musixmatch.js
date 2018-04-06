@@ -75,12 +75,15 @@
 // MusixMatch Logic to move search items from table to Playlist
   // ==================================================================
   $('.searchDump').on('click', '.trackSelect', function() {
-    console.log(this); 
+    // console.log(this); 
+      var tblH = $('<tr><th>Artist</th><th>Album</th><th>Track Name</th><th>Track Length</th>')
+      $('#playlistWIPHead').html(tblH);
     $('.playlistWIP').append(this); 
   }); 
 
   $('.playlistWIP').on('click', '.trackSelect', function() {
-    $(this).remove(); 
+    $('.searchDump').append(this); 
+    // $(this).remove(); 
   }); 
 
 // ==================================================================
