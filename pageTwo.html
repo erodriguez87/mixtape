@@ -1,23 +1,28 @@
 <html lang="en-us"><head>
-    <meta charset="UTF-8">
-    <title>MXTP2</title>
-    <meta name="viewport" content="width=device-width">
+  <meta charset="UTF-8">
+  <title>MXTP2</title>
+  <meta name="viewport" content="width=device-width">
+
   <!-- Links to CSS, CDN, then custom below to override -->
-    <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+    
+  <!-- Compiled and minified Materialize -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     
     <title>MXTP</title> 
     
   </head>
   
   <body>
+  
+    <!-- begin Wrapper -->
       <div class="wrapper">
         <div class="box header white">
           <img src = "assets/images/logo.png"></a>
@@ -26,28 +31,24 @@
           <div class="box finalUserInfo white"></div>
           <div class="box albumImage white"></div>
 
-
-          <!-- share button/ modal -->
+          <!-- structure -->
           <div class="row section">
             <div class="col">
-              <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Share</a> -->
             </div>
-          </div> <!--end modal trigger-->
-  
+          </div> 
+
           <!-- modal structure/ Modal1 -->
-            <div id="modal1" class="modal align-center">
-              <div class="modal-content">
-                <h4>Share Your Tape!</h4>
-                  <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Facebook</a>
-                  <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Twitter</a>
-                  <a class="waves-effect waves-light btn-large"><i class="material-icons left">link</i>Link</a>
-              </div>
-              <div class="modal-footer">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-              </div>
+          <div id="modal1" class="modal align-center">
+            <div class="modal-content">
+              <h4>Share Your Tape!</h4>
+                <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Facebook</a>
+                <a class="waves-effect waves-light btn-large"><i class="material-icons left">share</i>Twitter</a>
+                <a class="waves-effect waves-light btn-large"><i class="material-icons left">link</i>Link</a>
             </div>
-          <!-- end modal html -->
-  
+            <div class="modal-footer">
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+          </div>
           <!-- Youtube / Modal2-->
           <div id="modal2" class="modal videoWrapper align-center">
             <div class="modal-content">
@@ -57,28 +58,32 @@
               <a href="#!" class=" modal-action modal-close waves-effect pink-darken-3 btn-flat">Close</a>
             </div>
           </div>
-        </div> <!--end mixtapeCover-->
-  
+        </div>
+        <!-- End of both modals -->
+
+        <!-- structure for final playlist, album summary div -->
         <div class="box finalPlaylist white"></div>
-      
         <div class="box summary white"></div>
-
-
-  
-        <div class="box shareTunes white">
-        </div><!--end shareTunes-->
+        <div class="box shareTunes white"></div>
+        <!-- End of structureal divs -->
       
-      
+        <!-- button for for making another mixtape -->
         <div class = "box white center-align mixButtonContainer">
             <a class="waves-effect waves-light btn-large pink darken-3" href = "index.html">YOU'RE REALLY GOOD AT THIS! MAKE ANOTHER MIXTAPE!</a>
         </div>
-  
-        <div class="box footer pink darken-3 center-align"><h6>"People who show you new music are important." - Someone</h6></div>
+        <!-- End of new mixtape button -->
+
+        <!-- footer -->
+        <div class="box footer pink darken-3 center-align">
+          <h6>"People who show you new music are important." - Someone</h6>
+        </div>
+        <!-- end of footer -->
       </div>
-  
-      
+    <!-- end of wrapper -->
+
     <!-- Code to the JavaScript File -->
-      <script src="assets/javascript/app.js"></script>
-      <script src="assets/javascript/musixmatch.js"></script>
-    
-    </body></html>
+    <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/musixmatch.js"></script>
+
+</body>
+</html>
