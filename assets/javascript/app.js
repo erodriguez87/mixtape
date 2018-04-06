@@ -49,12 +49,8 @@
             tempImageDiv.append(tapeImage, tapeLabel); 
         var tempPlaylistDiv = $('<div class="card-content">'); 
           var songs = $('<ul>'); 
-          songs.append('<li>', song1);
-          songs.append('<li>', song2);
-          songs.append('<li>', song3);
-          songs.append('<li>', song4);
-          songs.append('<li>', song5);
-
+                  
+          songs.append(song1 + '<br>' + song2+ '<br>' + song3+ '<br>' + song4+ '<br>' + song5);
 
           tempPlaylistDiv.html(songs); 
 
