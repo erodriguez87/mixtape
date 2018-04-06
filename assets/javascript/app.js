@@ -9,7 +9,7 @@
   $(document).ready(function() {
 // ==================================================================
 
-// ==== Firebase integration ========================================
+// ====Firebase integration==========================================
   var config = {
     apiKey: "AIzaSyAG5Hd-FWiTUqqHFLM6ag-eksuRF6BHVZ4",
     authDomain: "mxtp-68055.firebaseapp.com",
@@ -63,7 +63,7 @@
     // ===============================================
 // ==================================================================
 
-// =====Tape Selector ===============================================
+// =====Tape Selector================================================
   var tapeImageArray = []; 
   var tape1 = $('<img class="tapeImages" id="tape1" src="assets/images/tape1.jpg" style="width:100%">'); 
   var tape2 = $('<img class="tapeImages" id="tape2" src="assets/images/tape2.png" style="width:100%">'); 
@@ -100,7 +100,7 @@
   });
 // ==================================================================
 
-// =====Mixtape Info=================================================
+// ====Mixtape Info==================================================
 
   $(".mixtapeInfoSave").attr('disabled','disabled');
 
