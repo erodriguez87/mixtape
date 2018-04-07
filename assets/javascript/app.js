@@ -174,7 +174,6 @@
 
 // ====Final Playlist================================================
   function genFinPlaylist () {
-    console.log('in fin playlist');
       // $('.modal-trigger').leanModal();
       $('.finalPlaylist').empty(); //clears whatever was in the playlist before showing the new one
 
